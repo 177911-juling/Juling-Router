@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "releaseDate": "2026-11-12",
+  "releaseDate": "2026-11-11",
   "releaseNotes": "## Juling Router 1.0.0 首个公开版本\n\n- 统一桌面控制台：安装、启动并管理 20 多款 AI CLI 与桌面应用。\n- 模型中心：OpenAI / Anthropic / Gemini / DeepSeek / 中转与本地模型配置一次，所有工具共用；支持一键切换与延迟测试。\n- 账号中心：ChatGPT、Codex CLI、Claude Code 多账号登录、额度查看与刷新。\n- 智能接入（Auto Router）：本机 OpenAI / Anthropic 兼容端点，按优先级自动故障转移。\n- 本地大模型：硬件检测、模型下载与一键启动。\n- 语音输入、助手、简报、轨迹、插件中心与 Token 宠物。\n- 全新界面：浮动导航栏、浅色/深色主题、中英双语截图与文档。\n- Windows / macOS / Linux，Tauri + Rust，Apache-2.0。",
   "releaseNotesI18n": {
     "zh-cn": "## Juling Router 1.0.0 首个公开版本\n\n- 统一桌面控制台：安装、启动并管理 20 多款 AI CLI 与桌面应用。\n- 模型中心：OpenAI / Anthropic / Gemini / DeepSeek / 中转与本地模型配置一次，所有工具共用；支持一键切换与延迟测试。\n- 账号中心：ChatGPT、Codex CLI、Claude Code 多账号登录、额度查看与刷新。\n- 智能接入（Auto Router）：本机 OpenAI / Anthropic 兼容端点，按优先级自动故障转移。\n- 本地大模型：硬件检测、模型下载与一键启动。\n- 语音输入、助手、简报、轨迹、插件中心与 Token 宠物。\n- 全新界面：浮动导航栏、浅色/深色主题、中英双语截图与文档。\n- Windows / macOS / Linux，Tauri + Rust，Apache-2.0。",
