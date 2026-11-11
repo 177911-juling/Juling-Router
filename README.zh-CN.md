@@ -21,13 +21,12 @@ Juling Router 是一个开源桌面控制台，用来统一管理 AI 工具与�
 </p>
 
 <p align="center">
-  <a href="https://www.177911.com">官网</a> ·
+  <a href="https://www.177911.com">API Token交易平台</a> ·
   <a href="https://github.com/177911-juling/Juling-Router/releases/latest">下载</a> ·
-  <a href="https://www.177911.com/support/">支持项目</a> ·
   <a href="README.md">English README</a>
 </p>
 
-> 本 GitHub 仓库是分发渠道之一，也是公开的 issue 反馈入口。产品页面、公告与商业合作请访问 [www.177911.com](https://www.177911.com)。
+> 本 GitHub 仓库是分发渠道之一，也是公开的 issue 反馈入口。产品页面、公告与商业合作请访问 [聚灵面向大模型算力交易平台](https://www.177911.com)。
 
 ---
 
@@ -208,7 +207,7 @@ cd src-tauri && cargo fmt --check && cargo clippy --all-targets --all-features -
 **支持哪些平台？**
 Windows x64、Apple Silicon 版 macOS，以及 Linux x64/arm64（Deb/RPM）。
 
-## 赞助商
+## 开发商
 
 <table>
   <tr>
@@ -216,13 +215,11 @@ Windows x64、Apple Silicon 版 macOS，以及 Linux x64/arm64（Deb/RPM）。
       <img src="docs/sponsors/juling-api.png" width="92" alt="聚灵API交易平台" />
     </td>
     <td>
-      <a href="https://www.177911.com"><strong>聚灵API交易平台</strong></a> —— 模型 API 交易平台<br/>
-      感谢 <strong>聚灵API交易平台</strong> 赞助了本项目！一个 API Key 即可让应用商店里的工具接入模型中心收录的模型，免去多账号切换。与聚灵路由器同一团队维护。
+      <a href="https://www.177911.com"><strong>聚灵API交易平台</strong></a> —— API Token大模型算力交易平台<br/>
+      不被任何一家API网站绑架，全网比价。模型多、商家多、不断档、买得到、用得起、靠得住、有保障！
     </td>
   </tr>
 </table>
-
-赞助联系：[hi@177911.com](mailto:hi@177911.com)
 
 ## 许可与品牌
 

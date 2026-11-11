@@ -21,13 +21,12 @@ Juling Router is an open-source desktop control center for AI tools and LLM prov
 </p>
 
 <p align="center">
-  <a href="https://www.177911.com">Website</a> ·
+  <a href="https://www.177911.com">API Token Trading Platform</a> ·
   <a href="https://github.com/177911-juling/Juling-Router/releases/latest">Download</a> ·
-  <a href="https://www.177911.com/support/">Support the project</a> ·
   <a href="README.zh-CN.md">中文 README</a>
 </p>
 
-> This GitHub repository is one of several distribution channels and the public issue tracker. Product pages, announcements and commercial inquiries live at [www.177911.com](https://www.177911.com).
+> This GitHub repository is one of several distribution channels and the public issue tracker. Product pages, announcements and commercial inquiries: [Juling, a large-model compute trading platform](https://www.177911.com).
 
 ---
 
@@ -208,7 +207,7 @@ Yes. Any OpenAI- or Anthropic-compatible endpoint can be added as a model, inclu
 **Which platforms are supported?**
 Windows x64, macOS on Apple Silicon, and Linux x64/arm64 as Debian or RPM packages.
 
-## Sponsors
+## Developer
 
 <table>
   <tr>
@@ -216,13 +215,11 @@ Windows x64, macOS on Apple Silicon, and Linux x64/arm64 as Debian or RPM packag
       <img src="docs/sponsors/juling-api.png" width="92" alt="Juling API Market" />
     </td>
     <td>
-      <a href="https://www.177911.com"><strong>Juling API Market</strong></a> — model API marketplace<br/>
-      Thanks to <strong>Juling API Market</strong> for sponsoring this project! One API key connects the tools in App Store to the models collected in Model Center, so you don't juggle accounts. Maintained by the same team as Juling Router.
+      <a href="https://www.177911.com"><strong>Juling API Market</strong></a> — API Token trading platform for large-model compute<br/>
+      No lock-in to any single API site — compare the whole market. More models, more vendors, never out of stock, available, affordable, reliable and guaranteed.
     </td>
   </tr>
 </table>
-
-Sponsorship contact: [hi@177911.com](mailto:hi@177911.com)
 
 ## License and brand
 
@@ -234,5 +231,5 @@ The **brand and trade dress** are separate from the code license. The name **Jul
 
 <p align="center">
   Built by the Juling Router Team<br>
-  <sub>⭐ <a href="https://github.com/177911-juling/Juling-Router">Star the repository</a> · <a href="README.zh-CN.md">中文文档</a> · <a href="https://www.177911.com">Website</a></sub>
+  <sub>⭐ <a href="https://github.com/177911-juling/Juling-Router">Star the repository</a> · <a href="README.zh-CN.md">中文文档</a> · <a href="https://www.177911.com">API Token Trading Platform</a></sub>
 </p>
