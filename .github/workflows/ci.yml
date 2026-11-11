@@ -97,7 +97,7 @@ jobs:
       # CI when the dev environment is on an older stable. Bump
       # deliberately when we want to adopt new lints; mirror the change
       # in release.yml so the build matrix stays in lockstep.
-      - uses: dtolnay/rust-toolchain@1.93
+      - uses: dtolnay/rust-toolchain@1.120
         with:
           components: clippy, rustfmt
 
