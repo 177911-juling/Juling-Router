@@ -1,34 +1,214 @@
 <p align="center">
-  <img src="docs/icon.png" alt="Juling Router" width="140" />
+  <img src="docs/icon.png" alt="Juling Router app icon" width="128" />
 </p>
 
 <h1 align="center">Juling Router</h1>
 
-<p align="center">All-in-one AI desktop app: one-click install for Claude Code, Codex CLI, DeepSeek and more, manage AI accounts and quotas, smart model routing with auto-failover, voice input, and run local LLMs. Bonus: a Token Pet that grows as you use AI.</p>
+<p align="center"><strong>One desktop window to install, launch and re-point every AI coding tool — with one shared model catalog.</strong></p>
+
+<p align="center">
+Juling Router is an open-source desktop control center for AI tools and LLM providers. It installs and launches 20+ AI CLIs and desktop agents, writes each tool's native config when you switch models, keeps ChatGPT / Codex CLI / Claude Code accounts with live quota in one place, runs a local OpenAI- and Anthropic-compatible endpoint with automatic failover, and can serve local models. Windows, macOS and Linux. Tauri + Rust.
+</p>
 
 <p align="center">
   <a href="https://github.com/177911-juling/Juling-Router/releases">
-    <img src="https://img.shields.io/github/v/release/177911-juling/Juling-Router?style=flat-square&color=D97757" alt="Release" />
+    <img src="https://img.shields.io/github/v/release/177911-juling/Juling-Router?style=flat-square&color=D97757" alt="Latest release" />
   </a>
-  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue?style=flat-square" alt="Platform" />
-  <img src="https://img.shields.io/badge/built%20with-Tauri%20%2B%20Rust-orange?style=flat-square" alt="Tauri + Rust" />
-  <img src="https://img.shields.io/github/license/177911-juling/Juling-Router?style=flat-square" alt="Apache-2.0 License" />
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-blue?style=flat-square" alt="Windows, macOS and Linux" />
+  <img src="https://img.shields.io/badge/stack-Tauri%20%2B%20Rust-orange?style=flat-square" alt="Tauri + Rust" />
+  <img src="https://img.shields.io/github/license/177911-juling/Juling-Router?style=flat-square" alt="Apache-2.0 license" />
+  <img src="https://img.shields.io/github/stars/177911-juling/Juling-Router?style=flat-square" alt="GitHub stars" />
 </p>
 
 <p align="center">
   <a href="https://www.177911.com">Website</a> ·
   <a href="https://github.com/177911-juling/Juling-Router/releases/latest">Download</a> ·
-  <a href="https://www.177911.com/support/">☕ Buy a coffee</a> ·
+  <a href="https://www.177911.com/support/">Support the project</a> ·
   <a href="README.zh-CN.md">中文 README</a>
 </p>
 
-> **Note** — This repository is just one of several download channels
-> and an issue tracker. For product information, announcements, and
-> commercial inquiries, visit [www.177911.com](https://www.177911.com).
+> This GitHub repository is one of several distribution channels and the public issue tracker. Product pages, announcements and commercial inquiries live at [www.177911.com](https://www.177911.com).
 
 ---
 
-## 💜 Sponsors
+## Why this exists
+
+AI work is scattered by design. Claude Code, Codex CLI, Cursor, ChatGPT Desktop and the rest each keep their own config file, their own login and their own quota screen. Setting up a new machine means repeating everything, and a provider outage means editing half a dozen files one by one.
+
+Juling Router pulls that apart into a single desktop surface: one catalog of providers and models, one place to install and launch the apps, one switch for accounts and models, and one local endpoint that keeps going when a provider does not.
+
+## At a glance
+
+| What you get | Why it matters |
+| --- | --- |
+| **AI app manager** | Install, update and launch 20+ coding CLIs and desktop agents; Juling Router knows where each one lives and how it stores settings |
+| **Shared model catalog** | OpenAI-compatible APIs, Anthropic, Gemini, DeepSeek and router/relay providers configured once, then reused by every supported tool |
+| **Model switching** | Pick a model in the catalog and Juling Router rewrites the tool's native config (`~/.claude`, `~/.codex`, `~/.grok/config.toml`, `~/.kimi-code/config.toml` and more) — no manual TOML/JSON editing |
+| **Account center** | Multiple ChatGPT, Codex CLI and Claude Code accounts, browser sign-in, plan and quota display, refresh and deletion |
+| **Auto Router** | A local OpenAI Chat Completions + Anthropic Messages endpoint that tries models in your order and fails over on rate limits or outages |
+| **Local LLMs** | Hardware-aware runtime selection, model download and a one-click start — all on your own machine |
+| **Extras** | Voice input, a chat assistant, AI news briefs, a usage dashboard, community plugins and a token pet |
+
+## Run your AI stack from one window
+
+The App Manager is the home screen. It detects what is installed, offers one-click install for the rest, and launches apps without hunting for shortcuts. Every supported tool is driven through the same model catalog, so the workflow is always the same: pick a provider, pick a model, launch, switch.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/desktop-en-dark.png">
+  <img alt="Juling Router App Manager with the app store" src="docs/screenshots/desktop-en-light.png" width="100%">
+</picture>
+
+Coding CLIs such as **Claude Code**, **Codex CLI**, **Grok Build**, **Kimi CLI**, **Qwen Code**, **Aider**, **OpenCode**, **MiMo Code**, **Kilo Code**, **ZCode**, **OpenClaw**, **Pi** and **Vibe-Trading** are handled at their native config level. Desktop apps including **Claude Desktop** (3P profile), **ChatGPT Desktop**, **Kimi Desktop**, **OpenCode Desktop**, **OpenScience** and **WorkBuddy** are supported too.
+
+## One model catalog, every tool
+
+Model Nexus is the single source of truth. Add OpenAI, Anthropic, Gemini, DeepSeek, compatible third-party APIs, API relays or local models, test latency before committing, then point any supported tool at that entry. Change the provider or the key once — every tool that uses it follows.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/model-en-dark.png">
+  <img alt="Juling Router Model Nexus" src="docs/screenshots/model-en-light.png" width="100%">
+</picture>
+
+API keys are encrypted at rest with AES-256-GCM and bound to the machine; they never leave your computer.
+
+## Switch accounts, watch quota
+
+Save several accounts for the tools that rotate sessions, then choose which one a launch should use:
+
+- **ChatGPT Desktop and Codex CLI** — add OpenAI accounts through browser sign-in; both read the shared local Codex account, so the selected account applies to both.
+- **Claude Code** — browser authorization, then launch with the chosen account; plan, remaining 5-hour and 7-day quota, and reset countdowns are shown when the provider exposes them.
+- **Quota panel** — refresh usage, spot exhausted accounts and remove saved ones without leaving the app.
+
+Account switching changes logins; Auto Router below is about model endpoints. Pick whichever fits the task, and use a third-party model when you prefer an API provider.
+
+## A local endpoint that survives provider failures
+
+Auto Router puts up to 20 of your configured models behind one local API. Drag the cards into priority order; requests try the first model, then fall back automatically when a model is rate-limited, out of quota or temporarily unavailable. Cooldowns end, and routing resumes from the top.
+
+- **One endpoint, two protocols** — OpenAI Chat Completions and Anthropic Messages, including clients such as Claude Code.
+- **Explicit priority** — the order you set is the order used, not a price- or task-based guess.
+- **No key re-entry** — reuse models already configured in Model Nexus.
+
+For ChatGPT Desktop and Codex CLI third-party models, use account switching or a Responses-compatible provider directly; Auto Router does not expose the Responses API.
+
+## Models that never leave your machine
+
+The Local page detects your hardware, picks a suitable runtime, downloads a quantized model and starts a server in one flow. Everything runs locally; nothing is uploaded to a hosted provider.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/localllm-en-dark.png">
+  <img alt="Juling Router local model marketplace" src="docs/screenshots/localllm-en-light.png" width="100%">
+</picture>
+
+## More than a launcher
+
+- **Voice input** — speech-to-text with text polishing, plus selection translate and ask once the enhancement is enabled.
+- **Assistant** — a chat-driven setup and troubleshooting agent with quick commands and SSH server management.
+- **AI Brief** — a daily digest of AI news, pulled into the same app.
+- **AI Career** — a dashboard of sessions, messages and token usage across your coding tools.
+- **Plugin Hub (developer preview)** — install reviewed community plugins, themes and text processors from GitHub, GitCode/CNB or a local directory.
+- **Token Pet** — a small companion that grows as you use AI.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/agent-en-dark.png">
+        <img alt="Juling Router Assistant" src="docs/screenshots/agent-en-light.png" width="100%">
+      </picture>
+      <br><sub>Assistant</sub>
+    </td>
+    <td align="center" width="50%">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/career-en-dark.png">
+        <img alt="Juling Router AI Career dashboard" src="docs/screenshots/career-en-light.png" width="100%">
+      </picture>
+      <br><sub>AI Career</sub>
+    </td>
+  </tr>
+</table>
+
+## Supported tools
+
+**Install and switch models in one click** — the tool's own config is rewritten for you.
+
+Coding CLIs: Claude Code · Codex CLI (OpenAI) · Grok Build (xAI) · Kimi CLI (Moonshot) · Qwen Code · Aider · OpenCode · MiMo Code (Xiaomi) · Kilo Code · ZCode (Z.AI) · OpenClaw · Pi · Vibe-Trading
+
+Desktop apps: Claude Desktop (3P profile) · ChatGPT Desktop · Kimi Desktop · OpenCode Desktop · OpenScience · WorkBuddy (Tencent CodeBuddy)
+
+**Install and launch, model selection stays with the app**
+
+Hermes Desktop · Claude Science · Cursor · VS Code · Gemini Desktop · Coffee CLI
+
+## Install
+
+**Windows** (PowerShell)
+
+```powershell
+irm https://www.177911.com/install.ps1 | iex
+```
+
+**macOS / Linux**
+
+```sh
+curl -fsSL https://www.177911.com/install.sh | sh
+```
+
+The script detects the OS, downloads the matching build and skips the download when you are already current.
+
+Prefer a manual download? Grab the latest package:
+
+| Platform | Asset |
+| --- | --- |
+| Windows x64 | `JulingRouter_<ver>_Windows_x64-setup.exe` |
+| macOS (Apple Silicon) | `JulingRouter_<ver>_macOS_arm64.dmg` |
+| Linux x64 · Debian/Ubuntu | `JulingRouter_<ver>_Linux_x64.deb` |
+| Linux arm64 · Debian/Ubuntu | `JulingRouter_<ver>_Linux_arm64.deb` |
+| Linux x64 · Fedora/RHEL | `JulingRouter_<ver>_Linux_x64.rpm` |
+| Linux arm64 · Fedora/RHEL | `JulingRouter_<ver>_Linux_arm64.rpm` |
+
+Releases: <https://github.com/177911-juling/Juling-Router/releases/latest>
+
+## Build from source
+
+Requirements: Node.js 22+, Rust 1.93 (see `rust-toolchain.toml`), and the usual Tauri platform prerequisites (MSVC + WebView2 on Windows, Xcode command-line tools on macOS, WebKitGTK on Linux).
+
+```sh
+git clone https://github.com/177911-juling/Juling-Router.git
+cd Juling-Router
+npm install
+npm run dev     # Tauri dev window
+npm run build   # production bundles
+```
+
+Quality gates used by CI:
+
+```sh
+npm run format:check && npm run typecheck && npm run lint && npm test
+cd src-tauri && cargo fmt --check && cargo clippy --all-targets --all-features -- -D warnings && cargo test
+```
+
+## FAQ
+
+**Is Juling Router a proxy or a VPN?**
+No. It is a desktop manager: it writes the config files that AI tools already read, and optionally exposes a local OpenAI/Anthropic-compatible endpoint on your machine. Nothing is tunneled to a remote service.
+
+**How do I switch models for Claude Code or Codex CLI?**
+Add the provider once in Model Nexus, then choose that entry for the tool. Juling Router rewrites the tool's native config, so no manual TOML or JSON editing is needed.
+
+**Where are my API keys and accounts stored?**
+Locally. Model API keys are encrypted with AES-256-GCM using a machine-bound key; account data stays in the app's own directory and is never uploaded.
+
+**Does Auto Router rotate my accounts?**
+No — it rotates **model endpoints**. Use the Account Center to switch ChatGPT, Codex CLI or Claude Code logins.
+
+**Can I point it at a self-hosted or third-party OpenAI-compatible API?**
+Yes. Any OpenAI- or Anthropic-compatible endpoint can be added as a model, including local servers.
+
+**Which platforms are supported?**
+Windows x64, macOS on Apple Silicon, and Linux x64/arm64 as Debian or RPM packages.
+
+## Sponsors
 
 <table>
   <tr>
@@ -44,205 +224,15 @@
 
 Sponsorship contact: [hi@177911.com](mailto:hi@177911.com)
 
----
+## License and brand
 
-## What is Juling Router?
+The source code of **Juling Router v1.0.0** is released under the [Apache License 2.0](LICENSE). Fork it, audit it, build on it. [NOTICE](NOTICE) explains attribution.
 
-Friends kept asking me to install **Claude Code**, **OpenClaw**, **Hermes Agent**… every machine was different, and some refused to pay for an LLM. Setup and explanations took forever. So I built **Juling Router** — an Agent inspired by **Songbird**, the genius netrunner from _Cyberpunk 2077_ who solves any tech problem for V…
-
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <a href="docs/screenshots/desktop-cn-light.png">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/desktop-cn-dark.png">
-          <img alt="App Desktop — 中文" src="docs/screenshots/desktop-cn-light.png" width="100%">
-        </picture>
-      </a>
-      <br><sub>中文</sub>
-    </td>
-    <td align="center" width="50%">
-      <a href="docs/screenshots/desktop-en-light.png">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/desktop-en-dark.png">
-          <img alt="App Desktop — English" src="docs/screenshots/desktop-en-light.png" width="100%">
-        </picture>
-      </a>
-      <br><sub>English</sub>
-    </td>
-  </tr>
-</table>
-
-## Highlights
-
-Juling Router offers **4 scenarios** sharing a **unified model data hub** — **configure once, used everywhere**.
-
-### 4 scenarios
-
-- **Install & Repair Agent** — let an AI install and fix mainstream tools (Claude Code, OpenClaw, Hermes Agent, …); works locally and remotely
-- **One-click local LLM** — bundled vLLM / SGLang / llama.cpp runtimes; pick a quant, hit START
-- **Plugin Hub (Developer Preview)** — install reviewed community plugins or add extensions from a repository or local directory
-- **App Manager** — one-click launch and management for every AI / Agent app & game
-
-### Shared foundation
-
-- **Model Nexus** — a unified data hub for OpenAI / Anthropic / local LLMs / API Routers; configure once and all 4 scenarios pick it up; one-click latency check before you commit
-
-**Cross-platform** — Windows, macOS, Linux (x64 + arm64)
-
-## Multi-account switching — ChatGPT, Codex CLI, and Claude Code
-
-Manage multiple saved accounts in Juling Router's **App Manager**, view their usage quota, and choose the account to use when launching a tool.
-
-- **ChatGPT desktop and Codex CLI** — add OpenAI accounts through browser sign-in, then select a saved account and launch. Both tools share the local Codex account configuration, so switching affects the shared login.
-- **Claude Code** — add accounts through browser authorization, select an account, and launch Claude Code with it. View the plan, remaining 5-hour and 7-day quota, and reset countdowns when available.
-- **Quota at a glance** — check remaining quota and reset times, refresh account usage, and remove saved accounts from the same panel.
-
-**Get started:** open App Manager → choose ChatGPT, Codex CLI, or Claude Code → add and authorize your accounts → select an account → launch. Account selection takes effect on launch; choose a third-party model instead when you want to use an API provider.
-
-## Multi-model smart routing — priority and automatic failover
-
-Juling Router's **Smart Router** puts multiple model providers behind one local API. Add free, paid, or private models from Model Nexus, then drag the cards into your preferred order. The router tries models in that order and automatically falls back when a model is rate-limited, out of quota, or temporarily unavailable. After cooldown, it retries models in priority order.
-
-- **Up to 20 models** — reuse your configured models without entering their API keys again.
-- **One endpoint for compatible tools** — supports OpenAI Chat Completions and Anthropic Messages, including clients such as Claude Code.
-- **Explicit priority** — you control the order; routing follows that order rather than selecting models by task or price.
-
-**Get started:** open Smart Router → add models from My Models or the free-model directory → drag to set priority → choose **Auto Router** for a compatible tool in App Manager. Keep Juling Router running while tools use its local API.
-
-Smart Router switches between configured model APIs; it does not automatically rotate saved login accounts. ChatGPT / Codex CLI third-party models require the **Responses API**, which Smart Router does not currently expose. For those tools, use account switching or a Responses-compatible provider directly.
-
-[Explore account switching and smart routing on the website](https://www.177911.com/#accounts-and-routing).
-
-## Supported tools — install & switch models in one click
-
-Juling Router bundles the install references and **writes each tool's native config
-file**, so you install from one place and — crucially — **switch the model
-with a single click**. Configure a provider once in Model Nexus, then point
-any supported tool at it; no manual TOML / JSON editing, no per-CLI re-login.
-This is the part most "model switcher" repos leave you to figure out alone.
-
-### One-click install + one-click model switch
-
-The tools below support **both** — install _and_ model switching — which is
-the core of what Juling Router is for:
-
-**Coding CLIs** — Claude Code · Codex CLI (OpenAI) · Grok Build (xAI) ·
-Kimi CLI (Moonshot) · Qwen Code · Aider · OpenCode · MiMo Code (Xiaomi) · Kilo Code ·
-ZCode (Z.AI) · OpenClaw · Pi · Vibe-Trading
-
-**Desktop apps** — Claude Desktop (3P profile) · ChatGPT desktop ·
-Kimi Desktop · OpenCode Desktop · OpenScience · WorkBuddy (Tencent CodeBuddy)
-
-> Searching GitHub for "switch model for Grok Build" or "switch model for
-> Kimi CLI or Kimi Desktop"? Those are first-class here — pick the model in Model Nexus,
-> hit switch, and Juling Router rewrites `~/.grok/config.toml` or
-> `~/.kimi-code/config.toml` for you.
-
-### One-click install & launch
-
-These are detected, installed, and managed by Juling Router, but model switching
-is handled by the app itself (vendor-locked or no model config):
-
-Hermes Desktop · Claude Science · Cursor · VS Code ·
-Gemini Desktop · Coffee CLI
-
-## Screenshots
-
-### Model Nexus — the unified model data hub, configure once
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/model-en-dark.png">
-  <img alt="Model Nexus" src="docs/screenshots/model-en-light.png" width="100%">
-</picture>
-
-### App Desktop — one-click launch and management for every AI / Agent app
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/desktop-en-dark.png">
-  <img alt="App Desktop" src="docs/screenshots/desktop-en-light.png" width="100%">
-</picture>
-
-### Local LLM — run models on your own machine
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/localllm-en-dark.png">
-  <img alt="Local LLM" src="docs/screenshots/localllm-en-light.png" width="100%">
-</picture>
-
-### Install & Repair Agent — chat-driven setup and troubleshooting
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/agent-en-dark.png">
-  <img alt="Install & Repair Agent" src="docs/screenshots/agent-en-light.png" width="100%">
-</picture>
-
-### My AI Career — dashboard
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/career-en-dark.png">
-    <img alt="Juling Router — My AI Career dashboard" src="docs/screenshots/career-en-light.png" width="820">
-  </picture>
-</p>
-
-## Install
-
-### One-line install
-
-**Windows** (PowerShell)
-
-```powershell
-irm https://www.177911.com/install.ps1 | iex
-```
-
-**macOS / Linux**
-
-```sh
-curl -fsSL https://www.177911.com/install.sh | sh
-```
-
-The script auto-detects your OS, downloads the right package, and skips if you're already on the latest version.
-
-### Or download a package
-
-Latest release → <https://github.com/177911-juling/Juling-Router/releases/latest>
-
-| Platform                    | Asset                                  |
-| --------------------------- | -------------------------------------- |
-| Windows x64                 | `JulingRouter_<ver>_Windows_x64-setup.exe` |
-| macOS (Apple Silicon)       | `JulingRouter_<ver>_macOS_arm64.dmg`       |
-| Linux x64 · Debian/Ubuntu   | `JulingRouter_<ver>_Linux_x64.deb`         |
-| Linux arm64 · Debian/Ubuntu | `JulingRouter_<ver>_Linux_arm64.deb`       |
-| Linux x64 · Fedora/RHEL     | `JulingRouter_<ver>_Linux_x64.rpm`         |
-| Linux arm64 · Fedora/RHEL   | `JulingRouter_<ver>_Linux_arm64.rpm`       |
-
-## License & Trademarks
-
-**Code** — Juling Router **v1.0.0** is licensed under the
-[Apache License, Version 2.0](LICENSE). The full source is open — fork it, study it,
-ship it. See [NOTICE](NOTICE) for attribution.
-
-**Trade dress + brand** — Juling Router's primary protection is its **UI / UX trade
-dress**: the specific combination of four user-facing surfaces sharing one
-central model hub, plus the bundling of two complete reference applications
-(Reversi + AI Translator) as user tutorial templates. The wordmark **Juling Router**
-is a common-law trademark of 177911-juling; feature labels like _Model Nexus_ /
-_模型中心_ are descriptive and protected only as part of the trade dress.
-**Forks are welcome — no need to scrub our name and logo.** If your fork
-honestly credits Juling Router as upstream, you may keep our identity visible
-(e.g. "Juling Router Community Edition by X"). If you prefer to rebrand entirely,
-that's also fine — just keep the NOTICE attribution. The hard lines are:
-**commercial SaaS / app-store products literally branded "Juling Router"**
-without permission; **presenting the code as your own from-scratch original
-work**; and **adopting three or more of our four UI surfaces side-by-side in
-a competing product without independent prior-work documentation** (see
-[NOTICE](NOTICE) for the formal threshold). See [TRADEMARKS.md](TRADEMARKS.md)
-for the full policy.
+The **brand and trade dress** are separate from the code license. The name **Juling Router**, its logo, and the distinctive combination of the app's user-facing surfaces are common-law marks of 177911-juling; descriptive feature labels such as _Model Nexus_ / _模型中心_ are protected only as part of that trade dress. Forks may keep the branding with honest upstream credit ("Juling Router Community Edition by X"), or rebrand entirely while keeping the NOTICE attribution. Commercial SaaS or app-store products branded "Juling Router" need permission, and the code must not be presented as an original from-scratch work. See [TRADEMARKS.md](TRADEMARKS.md) for the exact policy.
 
 ---
 
 <p align="center">
-  Made with 💚 by Juling Router Team<br>
-  <sub>⭐ <a href="https://github.com/177911-juling/Juling-Router">Star on GitHub</a> · <a href="README.zh-CN.md">中文文档</a></sub>
+  Built by the Juling Router Team<br>
+  <sub>⭐ <a href="https://github.com/177911-juling/Juling-Router">Star the repository</a> · <a href="README.zh-CN.md">中文文档</a> · <a href="https://www.177911.com">Website</a></sub>
 </p>

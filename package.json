@@ -1,9 +1,25 @@
 {
   "name": "juling-router",
   "version": "1.0.0",
-  "description": "AI Model & Skill Management Desktop Application",
+  "description": "Open-source desktop hub for AI tools and models: install and launch 20+ AI apps, switch models, manage accounts and quotas, local routing with failover, and local LLMs.",
   "author": "Juling Router Team",
   "license": "Apache-2.0",
+  "keywords": [
+    "ai",
+    "llm",
+    "model-router",
+    "ai-tools",
+    "claude-code",
+    "codex-cli",
+    "cursor",
+    "chatgpt",
+    "deepseek",
+    "openai",
+    "anthropic",
+    "tauri",
+    "local-llm",
+    "desktop-app"
+  ],
   "type": "module",
   "scripts": {
     "dev": "npm run tauri -- dev",

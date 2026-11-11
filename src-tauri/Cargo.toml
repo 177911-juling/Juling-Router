@@ -1,10 +1,13 @@
 [package]
 name = "juling-router"
 version = "1.0.0"
-description = "The Nexus for Models, Agents & Vibe Coding"
+description = "Desktop hub for AI tools and models"
 authors = ["Juling Router Team"]
 license = "Apache-2.0"
-repository = "https://www.177911.com/"
+repository = "https://github.com/177911-juling/Juling-Router"
+homepage = "https://www.177911.com"
+keywords = ["ai", "llm", "router", "tauri", "desktop"]
+categories = ["development-tools"]
 edition = "2021"
 rust-version = "1.93"
 
