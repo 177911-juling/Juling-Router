@@ -33,20 +33,11 @@
 <table>
   <tr>
     <td width="150" align="center">
-      <a href="https://88api.ai/sign-up?aff=knFS"><img src="docs/sponsors/88api.png" width="92" alt="88API" /></a>
+      <img src="docs/sponsors/juling-api.png" width="92" alt="Juling API Market" />
     </td>
     <td>
-      <a href="https://88api.ai/sign-up?aff=knFS"><strong>88API</strong></a> — AI token aggregation platform<br/>
-      Thanks to <strong>88API</strong> for sponsoring this project! 88API is a one-stop token aggregation platform: a single API key provides stable access to language &amp; coding models — Claude Opus 5.5, Claude Sonnet 5.5, Claude Fable 5.1, GPT-6.1 Sol, GPT-6 Astra, DeepSeek V4.1 Flash, Gemini 3.8 Flash, Grok 4.7, GLM 5.3, Kimi K3 and more — along with image models (GPT-Image, Gemini, Grok), video models (Seedance, Veo, MiniMax Hailuo H3, Kling) and speech (Whisper, TTS), covering everything from copywriting and image creation/editing to video generation and voice-overs. New users get free trial credits to test model capabilities, with human support on site. Operated with overseas corporate credentials — stable and dependable, official invoices, and a 1:1 top-up ratio.
-    </td>
-  </tr>
-  <tr>
-    <td width="150" align="center">
-      <a href="https://grooroute.pro/sign-up?aff=FWGVPMYENJQ8"><img src="docs/sponsors/grooroute.png" width="92" alt="GrooRoute Pro" /></a>
-    </td>
-    <td>
-      <a href="https://grooroute.pro/sign-up?aff=FWGVPMYENJQ8"><strong>GrooRoute Pro</strong></a> — Official Claude and GPT models<br/>
-      Thanks to <strong>GrooRoute Pro</strong> for sponsoring this project! Official Claude and GPT models are now available. We invite everyone with a curious mind to explore advanced AI, including GPT-6.1 Sol, Claude Opus 5.5, Claude Sonnet 5.5, Claude Fable 5.1, GPT-6 Sol, GPT-6 Astra, GPT-6 Luna, DeepSeek V4.1 Flash and Grok 4.7. Connect directly from mainland China and get started with a single line of configuration — <a href="https://grooroute.pro/sign-up?aff=FWGVPMYENJQ8">sign up here</a>.
+      <a href="https://www.177911.com"><strong>Juling API Market</strong></a> — model API marketplace<br/>
+      Thanks to <strong>Juling API Market</strong> for sponsoring this project! One API key connects the tools in App Store to the models collected in Model Center, so you don't juggle accounts. Maintained by the same team as Juling Router.
     </td>
   </tr>
 </table>
