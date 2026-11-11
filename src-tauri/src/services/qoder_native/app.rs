@@ -279,8 +279,13 @@ mod tests {
         )
         .unwrap()
     }
-    fn store_auth(directory: &Path, cipher: &juling_router_storage::Cipher, value: &Value) -> Vec<u8> {
-        let bytes = juling_router_storage::encrypt_bytes(cipher, value.to_string().as_bytes()).unwrap();
+    fn store_auth(
+        directory: &Path,
+        cipher: &juling_router_storage::Cipher,
+        value: &Value,
+    ) -> Vec<u8> {
+        let bytes =
+            juling_router_storage::encrypt_bytes(cipher, value.to_string().as_bytes()).unwrap();
         files::write(&directory.join("auth.v1.dat"), &bytes).unwrap();
         bytes
     }
@@ -338,7 +343,8 @@ mod tests {
         let cipher = juling_router_storage::Cipher::Gcm(Box::new(
             aes_gcm::Aes256Gcm::new_from_slice(&[4u8; 32]).unwrap(),
         ));
-        let bytes = juling_router_storage::encrypt_bytes(&cipher, auth.to_string().as_bytes()).unwrap();
+        let bytes =
+            juling_router_storage::encrypt_bytes(&cipher, auth.to_string().as_bytes()).unwrap();
         assert!(bytes.starts_with(b"v10"));
         let decoded: Value =
             serde_json::from_slice(&juling_router_storage::decrypt_bytes(&cipher, &bytes).unwrap())

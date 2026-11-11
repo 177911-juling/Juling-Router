@@ -2681,7 +2681,10 @@ pub fn get_tool_process_names(tool_id: &str) -> Vec<String> {
     }
     let mut names = Vec::new();
     if let Some(exe) = find_tool_executable(&def.paths_config, false) {
-        if let Some(name) = std::path::Path::new(&exe).file_name().and_then(|n| n.to_str()) {
+        if let Some(name) = std::path::Path::new(&exe)
+            .file_name()
+            .and_then(|n| n.to_str())
+        {
             names.push(name.to_string());
         }
     }
@@ -4586,7 +4589,11 @@ mod tests {
         ));
         for (platform, path, file) in [
             ("windows", "windows/Devin.exe", "devin.exe"),
-            ("macos", "macos/Devin.app/Contents/MacOS/JulingRouter", "devin"),
+            (
+                "macos",
+                "macos/Devin.app/Contents/MacOS/JulingRouter",
+                "devin",
+            ),
             ("linux", "linux/devin", "devin"),
         ] {
             let exe = root.join(path);

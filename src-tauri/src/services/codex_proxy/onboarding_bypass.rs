@@ -137,10 +137,7 @@ fn apply_patches(state: &mut Value) -> bool {
             JULING_ROUTER_ONBOARDING_WELCOME_PENDING_KEY,
             Value::Bool(false),
         ),
-        (
-            JULING_ROUTER_ONBOARDING_PROJECTLESS_KEY,
-            Value::Bool(true),
-        ),
+        (JULING_ROUTER_ONBOARDING_PROJECTLESS_KEY, Value::Bool(true)),
         ("skip-full-access-confirm", Value::Bool(true)),
     ];
     for (k, v) in patches {
@@ -256,10 +253,7 @@ mod tests {
         bypass_onboarding(&dir).expect("ok");
         let state = read_state(&p);
         assert_eq!(state["some-other-top-level-key"], "keep me");
-        assert_eq!(
-            state[JULING_ROUTER_ATOM_STATE_KEY]["user-preference-x"],
-            42
-        );
+        assert_eq!(state[JULING_ROUTER_ATOM_STATE_KEY]["user-preference-x"], 42);
         // And the onboarding flags are now set.
         assert_eq!(
             state[JULING_ROUTER_ATOM_STATE_KEY][JULING_ROUTER_ONBOARDING_OVERRIDE_KEY],
