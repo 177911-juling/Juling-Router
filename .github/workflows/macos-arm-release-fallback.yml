@@ -83,7 +83,7 @@ jobs:
         run: echo "script=$(node -p "require('./package.json').scripts.tauri")" >> "$GITHUB_OUTPUT"
 
       - name: Build ARM app and upload to existing draft
-        uses: tauri-apps/tauri-action@v0
+        uses: tauri-apps/tauri-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ANTIGRAVITY_OAUTH_CLIENT_ID: ${{ secrets.ANTIGRAVITY_OAUTH_CLIENT_ID }}
