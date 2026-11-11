@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>设计系统 — System</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+    <style>
+      body {
+        padding-bottom: 24px;
+      }
+      .foot {
+        position: static;
+        margin-top: 32px;
+      }
+      .wrap {
+        padding: 0 var(--gutter);
+      }
+      .sys-head {
+        padding: 46px 0 30px;
+        border-bottom: 1px solid var(--hair-strong);
+      }
+      .sys-head h1 {
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+      .sys-head p {
+        margin-top: 10px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chrome">
+      <span class="ctl">—</span>
+      <span class="ctl">□</span>
+      <span class="ctl ctl-close">×</span>
+    </div>
+
+    <div class="wrap">
+      <header class="sys-head">
+        <h1>设计系统</h1>
+        <p>Catalog System · v1 · 8px 基线 · 细线分隔 · 单一强调色</p>
+      </header>
+
+      <section class="section">
+        <h2>色彩</h2>
+        <div class="hint">纸白为底，墨黑承载信息，钴蓝只用于当前与链接；状态色降饱和。</div>
+        <div class="swatches">
+          <div class="swatch"><i style="background: #fafaf8"></i><div class="name">纸白 Paper</div><div class="val">#FAFAF8</div></div>
+          <div class="swatch"><i style="background: #111214"></i><div class="name">墨黑 Ink</div><div class="val">#111214</div></div>
+          <div class="swatch"><i style="background: #6b6f76"></i><div class="name">次级 Muted</div><div class="val">#6B6F76</div></div>
+          <div class="swatch"><i style="background: #e4e4e1"></i><div class="name">细线 Hair</div><div class="val">#E4E4E1</div></div>
+          <div class="swatch"><i style="background: #2b4eff"></i><div class="name">强调 Accent</div><div class="val">#2B4EFF</div></div>
+          <div class="swatch"><i style="background: #4e7a5a"></i><div class="name">就绪 Ok</div><div class="val">#4E7A5A</div></div>
+          <div class="swatch"><i style="background: #b58a3c"></i><div class="name">注意 Warn</div><div class="val">#B58A3C</div></div>
+          <div class="swatch"><i style="background: #b4544a"></i><div class="name">错误 Error</div><div class="val">#B4544A</div></div>
+          <div class="swatch"><i style="background: #0d0e10"></i><div class="name">碳黑 Carbon</div><div class="val">#0D0E10</div></div>
+          <div class="swatch"><i style="background: #15171a"></i><div class="name">深面 Carbon 2</div><div class="val">#15171A</div></div>
+          <div class="swatch"><i style="background: #25282c"></i><div class="name">深线 Carbon Hair</div><div class="val">#25282C</div></div>
+          <div class="swatch"><i style="background: #e8e8e4"></i><div class="name">深墨 Carbon Ink</div><div class="val">#E8E8E4</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>字体</h2>
+        <div class="hint">Inter 承担界面，JetBrains Mono 只用于编号、计数、路径和耗时。</div>
+
+        <div class="type-row"><span class="spec">32 / 600 / -1.5%</span><span class="demo" style="font-size: 32px; font-weight: 600; letter-spacing: -0.015em">目录 Catalog</span></div>
+        <div class="type-row"><span class="spec">24 / 600</span><span class="demo" style="font-size: 24px; font-weight: 600">主力链路</span></div>
+        <div class="type-row"><span class="spec">18 / 600</span><span class="demo" style="font-size: 18px; font-weight: 600">Claude Code</span></div>
+        <div class="type-row"><span class="spec">15 / 500</span><span class="demo" style="font-size: 15px; font-weight: 500">GLM-4.6 主 · Kimi K2 备</span></div>
+        <div class="type-row"><span class="spec">13 / 400</span><span class="demo" style="font-size: 13px">按顺序降级，单节点连续失败 2 次切换</span></div>
+        <div class="type-row"><span class="spec">12 / mono</span><span class="demo mono" style="font-size: 12px; color: var(--muted)">99.2% · P50 1.8s · 862 req</span></div>
+        <div class="type-row"><span class="spec">10 / mono caps</span><span class="demo mono" style="font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2)">APP · CATEGORY · STATUS</span></div>
+      </section>
+
+      <section class="section">
+        <h2>组件</h2>
+        <div class="hint">零圆角、零阴影；层次只靠细线与留白。主按钮用墨黑，不用彩色块。</div>
+        <div class="components">
+          <button class="btn btn-primary">启动</button>
+          <button class="btn">打开配置</button>
+          <button class="btn btn-ghost">移除</button>
+          <span class="status"><i class="dot live"></i>运行中</span>
+          <span class="status"><i class="dot ok"></i>就绪</span>
+          <span class="status"><i class="dot idle"></i>限流中</span>
+          <span class="status"><i class="dot off"></i>未安装</span>
+          <span class="lane-badge">自动降级 <span class="state on">开</span></span>
+          <div class="kv" style="grid-template-columns: 72px auto">
+            <span class="k">运行时</span><span class="v mono" style="font-size: 12px">claude 2.0.14</span>
+          </div>
+          <div class="search" style="width: 240px; padding-bottom: 0; border-bottom: 1px solid var(--hair)">
+            <input placeholder="搜索" />
+            <span class="kbd">⌘K</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>动效</h2>
+        <div class="hint">只做位移、透明度与下划线展开；禁止缩放、发光、悬浮抬起。</div>
+        <div class="type-row"><span class="spec">120ms · ease-out</span><span class="demo">行悬停、按钮状态、下划线</span></div>
+        <div class="type-row"><span class="spec">160ms · ease-out</span><span class="demo">页签与筛选切换</span></div>
+        <div class="type-row"><span class="spec">180ms · ease-out</span><span class="demo">行内详情展开 / 收起（高度 + 透明度）</span></div>
+        <div class="type-row"><span class="spec">200ms · ease-out</span><span class="demo">数字计数：额度、耗时、token</span></div>
+        <div class="type-row"><span class="spec">240ms · cubic-bezier(.2,0,0,1)</span><span class="demo">抽屉与整页 sheet 进入</span></div>
+      </section>
+
+      <section class="section" style="border-bottom: 0">
+        <h2>深色</h2>
+        <div class="hint">同一套骨架与间距，只替换材质；强调色保持钴蓝，状态色提亮。</div>
+        <div class="dark-card">
+          <div>
+            <div class="row" style="grid-template-columns: 40px 1fr 120px 130px">
+              <span class="row-index">02</span>
+              <span class="row-name">Claude Code</span>
+              <span class="row-cat">CLI</span>
+              <span class="status" style="color: var(--carbon-ink)"><i class="dot live"></i>运行中</span>
+            </div>
+            <div class="row" style="grid-template-columns: 40px 1fr 120px 130px">
+              <span class="row-index">04</span>
+              <span class="row-name">Cursor</span>
+              <span class="row-cat">IDE</span>
+              <span class="status" style="color: var(--carbon-ink)"><i class="dot ok"></i>就绪</span>
+            </div>
+            <div class="row" style="grid-template-columns: 40px 1fr 120px 130px">
+              <span class="row-index">07</span>
+              <span class="row-name">Qoder</span>
+              <span class="row-cat">IDE</span>
+              <span class="status" style="color: var(--carbon-muted)"><i class="dot off"></i>未安装</span>
+            </div>
+          </div>
+          <div>
+            <div class="track" style="margin-top: 0">
+              <div class="node" style="background: var(--carbon-2); border-color: var(--carbon-hair); color: var(--carbon-ink)">
+                <div class="node-top">
+                  <span class="node-name">GLM-4.6</span>
+                  <span class="node-role">主</span>
+                </div>
+                <div class="node-meta" style="color: var(--carbon-muted)">2.1s · 0 次降级</div>
+              </div>
+              <div class="link"><span class="line" style="background: var(--carbon-hair)"></span><span class="label">失败 2 次</span><span class="arrow">›</span></div>
+              <div class="node" style="background: var(--carbon-2); border-color: var(--carbon-hair); color: var(--carbon-ink)">
+                <div class="node-top">
+                  <span class="node-name">Kimi K2</span>
+                  <span class="node-role">备 1</span>
+                </div>
+                <div class="node-meta" style="color: var(--carbon-muted)">1.4s · 12 次接管</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="foot">
+      <span>Catalog System · v1</span>
+      <span>设计稿 · 非实现</span>
+    </div>
+  </body>
+</html>

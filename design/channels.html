@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>通道 — Channels</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li class="active">通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">04</span><h1>通道</h1></div>
+        <div class="page-meta">6 条通道 · 4 条启用 · 今日 1,284 次请求</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">今日请求</div><div class="v">1,284</div><div class="d">较昨日 +8.1%</div></div>
+        <div class="stat"><div class="k">成功率</div><div class="v">99.2<span class="u">%</span></div><div class="d">失败 10 次</div></div>
+        <div class="stat"><div class="k">平均延迟</div><div class="v">1.8<span class="u">s</span></div><div class="d">P95 4.6s</div></div>
+        <div class="stat"><div class="k">本月节省</div><div class="v">126<span class="u">元</span></div><div class="d">对比官方价</div></div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">全部 <span class="count">6</span></button>
+          <button class="filter">已启用 <span class="count">4</span></button>
+          <button class="filter">已停用 <span class="count">2</span></button>
+        </div>
+        <div class="search"><input placeholder="搜索通道或模型" /><span class="kbd">⌘K</span></div>
+      </div>
+
+      <div class="app-grid g3">
+        <article class="app-card channel-card running" data-name="免费池 · 直连" data-endpoint="内置 · 无需配置">
+          <div class="top"><span class="idx">01</span><span class="status"><i class="dot live"></i>运行中</span></div>
+          <div class="card-head"><h3>免费池 · 直连</h3><div class="cat">免费池 · 内置</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">12 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">62%</span></div>
+            <div><span class="k">延迟</span><span class="v">0.9s</span></div>
+          </div>
+          <div class="load-track"><i style="width: 62%"></i></div>
+          <div class="card-foot"><span class="stats">失败率 0.6%</span><span class="acts"><button>停用</button><button class="primary-text">详情</button></span></div>
+        </article>
+
+        <article class="app-card channel-card running selected" data-name="自建代理 · 香港" data-endpoint="hk.example.net/v1">
+          <div class="top"><span class="idx">02</span><span class="status"><i class="dot live"></i>运行中</span></div>
+          <div class="card-head"><h3>自建代理 · 香港</h3><div class="cat">代理 · hk.example.net</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">8 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">31%</span></div>
+            <div><span class="k">延迟</span><span class="v">1.2s</span></div>
+          </div>
+          <div class="load-track"><i style="width: 31%"></i></div>
+          <div class="card-foot"><span class="stats">失败率 0.4%</span><span class="acts"><button>测试延迟</button><button class="primary-text">设为默认</button></span></div>
+        </article>
+
+        <article class="app-card channel-card" data-name="官方 API" data-endpoint="api.anthropic.com">
+          <div class="top"><span class="idx">03</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="card-head"><h3>官方 API</h3><div class="cat">官方 · 按量计费</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">5 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">7%</span></div>
+            <div><span class="k">延迟</span><span class="v">2.1s</span></div>
+          </div>
+          <div class="load-track"><i style="width: 7%"></i></div>
+          <div class="card-foot"><span class="stats">失败率 0.0%</span><span class="acts"><button>停用</button><button class="primary-text">详情</button></span></div>
+        </article>
+
+        <article class="app-card channel-card" data-name="局域网 · 公司" data-endpoint="10.0.0.8:8080">
+          <div class="top"><span class="idx">04</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="card-head"><h3>局域网 · 公司</h3><div class="cat">自建 · 10.0.0.8:8080</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">2 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">18%</span></div>
+            <div><span class="k">延迟</span><span class="v">0.4s</span></div>
+          </div>
+          <div class="load-track"><i style="width: 18%"></i></div>
+          <div class="card-foot"><span class="stats">失败率 0.1%</span><span class="acts"><button>停用</button><button class="primary-text">详情</button></span></div>
+        </article>
+
+        <article class="app-card channel-card" data-name="备用池 · 海外" data-endpoint="内置 · 低优先级">
+          <div class="top"><span class="idx">05</span><span class="status"><i class="dot off"></i>已停用</span></div>
+          <div class="card-head"><h3>备用池 · 海外</h3><div class="cat">免费池 · 低优先级</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">4 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">—</span></div>
+            <div><span class="k">延迟</span><span class="v">—</span></div>
+          </div>
+          <div class="load-track"><i style="width: 0"></i></div>
+          <div class="card-foot"><span class="stats">已停用 12 天</span><span class="acts"><button>启用</button><button class="primary-text">详情</button></span></div>
+        </article>
+
+        <article class="app-card channel-card" data-name="备用池 · 国内" data-endpoint="内置 · 低优先级">
+          <div class="top"><span class="idx">06</span><span class="status"><i class="dot off"></i>已停用</span></div>
+          <div class="card-head"><h3>备用池 · 国内</h3><div class="cat">免费池 · 低优先级</div></div>
+          <div class="metrics">
+            <div><span class="k">覆盖</span><span class="v">6 个模型</span></div>
+            <div><span class="k">负载</span><span class="v">—</span></div>
+            <div><span class="k">延迟</span><span class="v">—</span></div>
+          </div>
+          <div class="load-track"><i style="width: 0"></i></div>
+          <div class="card-foot"><span class="stats">已停用 8 天</span><span class="acts"><button>启用</button><button class="primary-text">详情</button></span></div>
+        </article>
+      </div>
+
+      <div class="selection-line">
+        <span class="lbl">选中 · <span class="sel-idx">02</span></span>
+        <span class="sel-name">自建代理 · 香港</span>
+        <span class="mono sel-endpoint" style="font-size: 11px">hk.example.net/v1</span>
+        <span>并发 16 · P95 2.8s</span>
+        <span>连续失败 2 次降级</span>
+        <span class="text-link spacer">编辑规则</span>
+      </div>
+    </main>
+
+    <div class="foot"><span>6 条通道 · 4 条启用 · 健康检查每 60 秒</span><span>04 / 09</span></div>
+
+    <script>
+      document.querySelectorAll(".app-grid").forEach((grid) => {
+        grid.addEventListener("click", (event) => {
+          const card = event.target.closest(".app-card");
+          if (!card || !grid.contains(card)) return;
+          grid.querySelectorAll(".app-card.selected").forEach((item) => item.classList.remove("selected"));
+          card.classList.add("selected");
+          const line = document.querySelector(".selection-line");
+          if (line) {
+            line.querySelector(".sel-name").textContent = card.dataset.name;
+            line.querySelector(".sel-endpoint").textContent = card.dataset.endpoint;
+            line.querySelector(".sel-idx").textContent = card.querySelector(".idx").textContent;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <title>深色 — Dark</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+    <style>
+      body { padding: 0; }
+      .frame { display: block; border: 0; width: 1440px; height: 1024px; }
+      .caption {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 24px;
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--muted);
+        border-bottom: 1px solid var(--hair);
+        background: var(--paper);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="caption"><span>目录 · 深色</span><span>Catalog / Dark</span></div>
+    <iframe class="frame" src="catalog.html?dark" title="catalog dark"></iframe>
+    <div class="caption"><span>路由 · 深色</span><span>Routes / Dark</span></div>
+    <iframe class="frame" src="routes.html?dark" title="routes dark"></iframe>
+    <div class="caption"><span>身份 · 深色</span><span>Identities / Dark</span></div>
+    <iframe class="frame" src="identity.html?dark" title="identity dark"></iframe>
+  </body>
+</html>

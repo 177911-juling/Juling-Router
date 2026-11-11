@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>助手 — Assistant</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li class="active">助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">06</span><h1>助手</h1></div>
+        <div class="page-meta">GLM-4.6 · 上下文 12.4K / 128K · 42 轮</div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">对话</button>
+          <button class="filter">工具调用</button>
+          <button class="filter">记忆</button>
+        </div>
+        <div class="search" style="border: 0; padding-bottom: 11px">
+          <span class="text-link">新建对话</span>
+        </div>
+      </div>
+
+      <div class="split">
+        <aside class="conv-list">
+          <div class="conv-item active">语音输入排查<span class="t">今天 10:42</span></div>
+          <div class="conv-item">模型降级规则<span class="t">昨天 18:20</span></div>
+          <div class="conv-item">本地引擎启动失败<span class="t">11-09 21:04</span></div>
+          <div class="conv-item">账号额度异常<span class="t">11-08 09:31</span></div>
+          <div class="conv-item">插件安装说明<span class="t">11-06 14:12</span></div>
+          <div class="conv-item">新的对话<span class="t">11-05 08:55</span></div>
+        </aside>
+
+        <section class="stream">
+          <div class="msg">
+            <div class="who">你 · 10:42</div>
+            <p>帮我检查一下语音输入为什么没有声音。</p>
+          </div>
+
+          <div class="msg">
+            <div class="who">助手 · 10:42</div>
+            <p>我先检查设备与本地通道状态。</p>
+            <div class="tool">读取配置 <span class="path">src-tauri/tauri.conf.json</span> · 8ms <span class="ok">✓</span></div>
+            <div class="tool">列出设备 <span class="path">CoreAudio · 2 inputs</span> · 14ms <span class="ok">✓</span></div>
+            <p>检测到两个输入设备：MacBook 麦克风、AirPods。默认设备是 AirPods，但采样率被系统降到了 8 kHz，低于 Voice 通道要求的 16 kHz，所以没有声音。</p>
+          </div>
+
+          <div class="msg">
+            <div class="who">你 · 10:43</div>
+            <p>切回笔记本麦克风。</p>
+          </div>
+
+          <div class="msg">
+            <div class="who">助手 · 10:43</div>
+            <p>已切换到内置麦克风，采样率 48 kHz。现在按住 ⌥ Space 试一次。</p>
+            <div class="tool">切换设备 <span class="path">MacBook 麦克风 · 48 kHz</span> · 21ms <span class="ok">✓</span></div>
+          </div>
+
+          <div class="composer">
+            <span class="ph">输入消息</span>
+            <span class="keys">⏎ 发送 · ⇧⏎ 换行 · ⌘K 命令</span>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <div class="foot"><span>上下文 12.4K / 128K · 本次会话 6m 12s · 3 次工具调用</span><span>06 / 09</span></div>
+  </body>
+</html>

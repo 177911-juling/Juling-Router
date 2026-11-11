@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>目录 — Catalog</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome">
+      <span class="ctl">—</span>
+      <span class="ctl">□</span>
+      <span class="ctl ctl-close">×</span>
+    </div>
+
+    <nav class="index">
+      <ul>
+        <li class="active">目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">01</span><h1>目录</h1></div>
+        <div class="page-meta">12 个应用 · 8 个就绪 · 2 个运行中</div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">全部 <span class="count">12</span></button>
+          <button class="filter">已安装 <span class="count">8</span></button>
+          <button class="filter">运行中 <span class="count">2</span></button>
+          <button class="filter">未安装 <span class="count">4</span></button>
+        </div>
+        <div class="search">
+          <input placeholder="搜索应用、模型或身份" />
+          <span class="kbd">⌘K</span>
+        </div>
+      </div>
+
+      <div class="app-grid">
+        <article class="app-card">
+          <div class="top"><span class="idx">01</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/aider.png" alt="" /></span>
+            <div><h3>Aider</h3><div class="cat">IDE · PAIR PROGRAMMING</div></div>
+          </div>
+          <p class="desc">在终端里与前缀式编辑配合的结对编程工具。</p>
+          <div class="card-foot"><span class="stats">2 身份 · 3 模型</span><span class="acts"><button>配置</button><button class="primary-text">启动</button></span></div>
+        </article>
+
+        <article class="app-card running selected">
+          <div class="top"><span class="idx">02</span><span class="status"><i class="dot live"></i>运行中</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/claudecode.svg" alt="" /></span>
+            <div><h3>Claude Code</h3><div class="cat">CLI · ANTHROPIC</div></div>
+          </div>
+          <p class="desc">读写代码、运行命令的终端编程代理。</p>
+          <div class="card-foot"><span class="stats">2 身份 · 5 模型</span><span class="acts"><button>配置</button><button class="primary-text">重启</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">03</span><span class="status"><i class="dot off"></i>未安装</span></div>
+          <div class="body">
+            <span class="logo-tile"><img class="invert" src="assets/tools/codex.svg" alt="" /></span>
+            <div><h3>Codex CLI</h3><div class="cat">CLI · OPENAI</div></div>
+          </div>
+          <p class="desc">OpenAI 的命令行编码代理，支持多轮工具调用。</p>
+          <div class="card-foot"><span class="stats">未安装</span><span class="acts"><button>详情</button><button class="primary-text">获取</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">04</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/cursor.svg" alt="" /></span>
+            <div><h3>Cursor</h3><div class="cat">IDE · EDITOR</div></div>
+          </div>
+          <p class="desc">带 AI 补全与多仓库索引的编辑器。</p>
+          <div class="card-foot"><span class="stats">1 身份 · 2 模型</span><span class="acts"><button>配置</button><button class="primary-text">启动</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">05</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/cline.png" alt="" /></span>
+            <div><h3>Cline CLI</h3><div class="cat">CLI · OPEN SOURCE</div></div>
+          </div>
+          <p class="desc">可插拔模型的开源编码代理。</p>
+          <div class="card-foot"><span class="stats">1 身份 · 4 模型</span><span class="acts"><button>配置</button><button class="primary-text">启动</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">06</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/kimicode.png" alt="" /></span>
+            <div><h3>Kimi CLI</h3><div class="cat">CLI · MOONSHOT</div></div>
+          </div>
+          <p class="desc">长上下文终端助手，支持工具调用。</p>
+          <div class="card-foot"><span class="stats">1 身份 · 2 模型</span><span class="acts"><button>配置</button><button class="primary-text">启动</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">07</span><span class="status"><i class="dot off"></i>未安装</span></div>
+          <div class="body">
+            <span class="logo-tile plain"><img src="assets/tools/qoder.svg" alt="" /></span>
+            <div><h3>Qoder</h3><div class="cat">IDE · REPO INTELLIGENCE</div></div>
+          </div>
+          <p class="desc">面向仓库理解的 AI IDE。</p>
+          <div class="card-foot"><span class="stats">未安装</span><span class="acts"><button>详情</button><button class="primary-text">获取</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">08</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/opendesign.png" alt="" /></span>
+            <div><h3>Open Design</h3><div class="cat">应用 · DESIGN FILES</div></div>
+          </div>
+          <p class="desc">本地设计文件与素材管理。</p>
+          <div class="card-foot"><span class="stats">5 天前使用</span><span class="acts"><button>配置</button><button class="primary-text">打开</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">09</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/antigravity.png" alt="" /></span>
+            <div><h3>Antigravity</h3><div class="cat">IDE · MULTI-AGENT</div></div>
+          </div>
+          <p class="desc">面向多代理协作的编辑器工作台。</p>
+          <div class="card-foot"><span class="stats">1 身份 · 3 模型</span><span class="acts"><button>配置</button><button class="primary-text">启动</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">10</span><span class="status"><i class="dot ok"></i>就绪</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/clashverge.svg" alt="" /></span>
+            <div><h3>Clash Verge</h3><div class="cat">应用 · NETWORK</div></div>
+          </div>
+          <p class="desc">代理与网络规则管理。</p>
+          <div class="card-foot"><span class="stats">今天使用</span><span class="acts"><button>配置</button><button class="primary-text">打开</button></span></div>
+        </article>
+
+        <article class="app-card">
+          <div class="top"><span class="idx">11</span><span class="status"><i class="dot off"></i>未安装</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/muse.png" alt="" /></span>
+            <div><h3>Muse</h3><div class="cat">应用 · CREATIVE</div></div>
+          </div>
+          <p class="desc">本地创意与素材工作台。</p>
+          <div class="card-foot"><span class="stats">未安装</span><span class="acts"><button>详情</button><button class="primary-text">获取</button></span></div>
+        </article>
+
+        <article class="app-card running">
+          <div class="top"><span class="idx">12</span><span class="status"><i class="dot live"></i>运行中</span></div>
+          <div class="body">
+            <span class="logo-tile"><img src="assets/tools/openclaw.svg" alt="" /></span>
+            <div><h3>OpenClaw</h3><div class="cat">应用 · SANDBOX</div></div>
+          </div>
+          <p class="desc">插件沙盒与工具运行环境。</p>
+          <div class="card-foot"><span class="stats">0 身份 · 1 模型</span><span class="acts"><button>配置</button><button class="primary-text">重启</button></span></div>
+        </article>
+      </div>
+    </main>
+
+    <div class="foot">
+      <span>3 个本地引擎 · 6 个供应商 · 同步于 2 分钟前</span>
+      <span>01 / 09</span>
+    </div>
+    <script>
+      document.querySelectorAll(".app-grid").forEach((grid) => {
+        grid.addEventListener("click", (event) => {
+          const card = event.target.closest(".app-card");
+          if (!card || !grid.contains(card)) return;
+          grid.querySelectorAll(".app-card.selected").forEach((item) => item.classList.remove("selected"));
+          card.classList.add("selected");
+        });
+      });
+    </script>
+  </body>
+</html>

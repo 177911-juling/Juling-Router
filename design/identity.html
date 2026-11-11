@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>身份 — Identities</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome">
+      <span class="ctl">—</span>
+      <span class="ctl">□</span>
+      <span class="ctl ctl-close">×</span>
+    </div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li class="active">身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">03</span><h1>身份</h1></div>
+        <div class="page-meta">12 个身份 · 9 正常 · 2 受限 · 1 过期</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">今日请求</div><div class="v">4,120</div><div class="d">较昨日 +12.4%</div></div>
+        <div class="stat"><div class="k">平均额度</div><div class="v">61<span class="u">%</span></div><div class="d">9 个身份低于 80%</div></div>
+        <div class="stat"><div class="k">7 天内到期</div><div class="v">2</div><div class="d warn">需要续期</div></div>
+        <div class="stat"><div class="k">异常</div><div class="v">1</div><div class="d warn">dev@studio.io 受限</div></div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">全部 <span class="count">12</span></button>
+          <button class="filter">正常 <span class="count">9</span></button>
+          <button class="filter">受限 <span class="count">2</span></button>
+          <button class="filter">已过期 <span class="count">1</span></button>
+        </div>
+        <div class="search"><input placeholder="搜索身份、邮箱或供应商" /><span class="kbd">⌘K</span></div>
+      </div>
+
+      <div class="table ident">
+        <div class="thead">
+          <span>№</span>
+          <span>身份</span>
+          <span>类型</span>
+          <span>状态</span>
+          <span>额度</span>
+          <span>最后使用</span>
+          <span class="right">操作</span>
+        </div>
+
+        <div class="row">
+          <span class="row-index">01</span>
+          <span class="row-name">work@acme.com<span class="sub-name">Anthropic · OAuth</span></span>
+          <span class="row-cat">CLAUDE CODE</span>
+          <span class="status"><i class="dot live"></i>使用中</span>
+          <span class="quota"><span class="bar"><i style="width: 68%"></i></span><span class="pct">68%</span></span>
+          <span class="last">现在</span>
+          <span class="row-actions"><button>切换</button><button class="primary-text">详情</button></span>
+        </div>
+
+        <div class="row">
+          <span class="row-index">02</span>
+          <span class="row-name">personal@gmail.com<span class="sub-name">Anthropic · OAuth</span></span>
+          <span class="row-cat">CLAUDE CODE</span>
+          <span class="status"><i class="dot ok"></i>正常</span>
+          <span class="quota"><span class="bar"><i style="width: 41%"></i></span><span class="pct">41%</span></span>
+          <span class="last">昨天 22:10</span>
+          <span class="row-actions"><button>切换</button><button class="primary-text">详情</button></span>
+        </div>
+
+        <div class="row open">
+          <span class="row-index">03</span>
+          <span class="row-name">dev@studio.io<span class="sub-name">OpenAI · OAuth</span></span>
+          <span class="row-cat">CODEX</span>
+          <span class="status"><i class="dot idle"></i>受限</span>
+          <span class="quota"><span class="bar low"><i style="width: 92%"></i></span><span class="pct">92%</span></span>
+          <span class="last">2 小时前</span>
+          <span class="row-actions"><button>切换</button><button class="primary-text">详情</button></span>
+        </div>
+
+        <div class="detail" style="grid-template-columns: 1fr 1fr 240px">
+          <div class="tabs">
+            <span class="active">概览</span>
+            <span>额度</span>
+            <span>代理</span>
+            <span>日志</span>
+          </div>
+          <div class="col">
+            <div class="kv"><span class="k">认证方式</span><span class="v">OAuth · 自动刷新</span></div>
+            <div class="kv"><span class="k">套餐</span><span class="v">Codex Pro</span></div>
+            <div class="kv"><span class="k">额度窗口</span><span class="v">5 小时 <span class="sub">18 分钟后重置</span></span></div>
+          </div>
+          <div class="col">
+            <div class="kv"><span class="k">代理</span><span class="v">香港 · 1.2s</span></div>
+            <div class="kv"><span class="k">隐私</span><span class="v">仅本地保存</span></div>
+            <div class="kv"><span class="k">最近错误</span><span class="v">429 · 今天 09:12</span></div>
+          </div>
+          <div class="detail-actions">
+            <button class="btn">刷新额度</button>
+            <button class="btn btn-primary">设为当前</button>
+          </div>
+        </div>
+
+        <div class="row">
+          <span class="row-index">04</span>
+          <span class="row-name">team@agency.co<span class="sub-name">Google · OAuth</span></span>
+          <span class="row-cat">GEMINI</span>
+          <span class="status"><i class="dot ok"></i>正常</span>
+          <span class="quota"><span class="bar"><i style="width: 23%"></i></span><span class="pct">23%</span></span>
+          <span class="last">3 天前</span>
+          <span class="row-actions"><button>切换</button><button class="primary-text">详情</button></span>
+        </div>
+
+        <div class="row">
+          <span class="row-index">05</span>
+          <span class="row-name">old@outlook.com<span class="sub-name">Anthropic · OAuth</span></span>
+          <span class="row-cat">CLAUDE 桌面端</span>
+          <span class="status"><i class="dot off"></i>已过期</span>
+          <span class="quota"><span class="bar"><i style="width: 0"></i></span><span class="pct">—</span></span>
+          <span class="last">12 天前</span>
+          <span class="row-actions"><button>重新登录</button><button class="primary-text">移除</button></span>
+        </div>
+
+        <div class="row">
+          <span class="row-index">06</span>
+          <span class="row-name">api-key-01<span class="sub-name">DeepSeek · API Key</span></span>
+          <span class="row-cat">DEEPSEEK</span>
+          <span class="status"><i class="dot ok"></i>正常</span>
+          <span class="quota"><span class="bar"><i style="width: 55%"></i></span><span class="pct">55%</span></span>
+          <span class="last">5 小时前</span>
+          <span class="row-actions"><button>切换</button><button class="primary-text">详情</button></span>
+        </div>
+      </div>
+    </main>
+
+    <div class="foot"><span>3 个供应商 · 2 个代理 · 最近同步 2 分钟前</span><span>03 / 09</span></div>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>简报 — Brief</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li class="active">简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">07</span><h1>简报</h1></div>
+        <div class="page-meta">今日 18 条 · 6 个来源 · 08:00 更新</div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">全部 <span class="count">18</span></button>
+          <button class="filter">模型 <span class="count">6</span></button>
+          <button class="filter">工具 <span class="count">5</span></button>
+          <button class="filter">计费 <span class="count">3</span></button>
+          <button class="filter">开源 <span class="count">4</span></button>
+        </div>
+        <div class="search"><input placeholder="搜索简报" /><span class="kbd">⌘K</span></div>
+      </div>
+
+      <div class="feed">
+        <article class="feed-item">
+          <div class="when">今天 09:12</div>
+          <div>
+            <h3>GPT-5.1 开放 1M 上下文，价格保持不变</h3>
+            <p>长上下文不再按阶梯加价，缓存命中价格下调 50%；Batch API 同步支持新模型。</p>
+            <span class="tag">模型</span>
+          </div>
+          <div class="src">OpenAI Blog</div>
+        </article>
+
+        <article class="feed-item">
+          <div class="when">今天 08:40</div>
+          <div>
+            <h3>Claude Code 调整 Opus 额度与计费</h3>
+            <p>Pro 套餐每周 Opus 额度从 40 小时调整为 30 小时，Sonnet 不受影响。</p>
+            <span class="tag">计费</span>
+          </div>
+          <div class="src">Anthropic</div>
+        </article>
+
+        <article class="feed-item">
+          <div class="when">今天 08:05</div>
+          <div>
+            <h3>DeepSeek V3.2 开源权重与推理脚本</h3>
+            <p>MIT 许可，提供 FP8 与 4-bit 量化版本；官方称在 8 卡 H20 上可跑到 64K 上下文。</p>
+            <span class="tag">开源</span>
+          </div>
+          <div class="src">DeepSeek</div>
+        </article>
+
+        <article class="feed-item">
+          <div class="when">昨天 21:18</div>
+          <div>
+            <h3>llama.cpp 支持 Q4_0_4_4 量化格式</h3>
+            <p>在 ARM 设备上吞吐提升约 18%，现有模型需要重新转换。</p>
+            <span class="tag">本地</span>
+          </div>
+          <div class="src">llama.cpp</div>
+        </article>
+
+        <article class="feed-item">
+          <div class="when">昨天 18:02</div>
+          <div>
+            <h3>Cursor 2.4 增加多仓库索引</h3>
+            <p>单个工作区最多可索引 5 个仓库，支持跨仓库跳转与统一检索。</p>
+            <span class="tag">工具</span>
+          </div>
+          <div class="src">Cursor</div>
+        </article>
+
+        <article class="feed-item">
+          <div class="when">昨天 12:30</div>
+          <div>
+            <h3>国内 API 价格一周变动汇总</h3>
+            <p>三家供应商下调长文本价格，两家上调图片输入费用；整理为对照表。</p>
+            <span class="tag">市场</span>
+          </div>
+          <div class="src">量子位</div>
+        </article>
+      </div>
+    </main>
+
+    <div class="foot"><span>6 个来源 · 已读 4 / 18 · 下次更新 12:00</span><span>07 / 09</span></div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "uuid": "juling-router-icons@juling-router.local",
+  "name": "Juling Router Application Icons",
+  "description": "Expose the focused application ID to Juling Router's voice island. Does not read window titles or control windows.",
+  "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
+  "url": "https://www.177911.com/",
+  "version": 1
+}

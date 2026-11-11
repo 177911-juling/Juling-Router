@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/inter-500.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/inter-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../public/fonts/inter-700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../public/fonts/JetBrainsMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../public/fonts/JetBrainsMono-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+:root {
+  /* paper & ink */
+  --paper: #fafaf8;
+  --paper-2: #f4f4f1;
+  --paper-3: #ecece8;
+  --ink: #111214;
+  --ink-2: #3a3d42;
+  --muted: #6b6f76;
+  --muted-2: #9a9da2;
+  --hair: #e4e4e1;
+  --hair-strong: #d2d2ce;
+
+  /* single accent */
+  --accent: #2b4eff;
+  --accent-ink: #1f3ad1;
+  --accent-wash: #eef1ff;
+
+  /* status, desaturated */
+  --ok: #4e7a5a;
+  --ok-wash: #eaf0ea;
+  --warn: #b58a3c;
+  --warn-wash: #f5efe2;
+  --err: #b4544a;
+  --err-wash: #f5eae8;
+
+  /* dark */
+  --carbon: #0d0e10;
+  --carbon-2: #15171a;
+  --carbon-3: #1d2024;
+  --carbon-hair: #25282c;
+  --carbon-ink: #e8e8e4;
+  --carbon-muted: #8f939a;
+
+  /* type */
+  --sans: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --mono: 'JetBrains Mono', 'Cascadia Mono', 'SF Mono', Consolas, monospace;
+
+  /* metrics */
+  --gutter: 72px;
+  --index-h: 56px;
+  --row-h: 64px;
+  --line: 1px;
+}

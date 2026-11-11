@@ -1,0 +1,284 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing unpublished release tag to build
+        required: true
+        type: string
+      platforms:
+        description: Platforms to rebuild
+        type: choice
+        options: [all, macos-arm]
+        default: all
+
+# Opt into Node.js 24 runner for all JavaScript-based actions before the
+# 2026-06-02 forced switch (mirrors the same opt-in in ci.yml).
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  # Create the GitHub release ONCE, up front, so the matrix build jobs below
+  # all upload to the SAME release object. Previously each matrix job ran
+  # tauri-action with tagName/releaseDraft, and since a DRAFT release is not
+  # returned by the releases/tags/{tag} lookup tauri-action uses, the parallel
+  # jobs each failed to "find" the draft and CREATED their own — producing
+  # duplicate drafts with the 8 assets split across them (hit previously).
+  create-release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-24.04
+    outputs:
+      release_id: ${{ steps.create.outputs.release_id }}
+    steps:
+      - name: Create (or reuse) the draft release
+        id: create
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          set -euo pipefail
+          [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          if [ "$(gh release view "$TAG" --repo "$REPO" --json isDraft -q .isDraft 2>/dev/null || echo missing)" = false ]; then
+            echo "::error::Refusing to replace a published release"; exit 1
+          fi
+          # Reuse an existing draft for this tag (safe on workflow re-runs),
+          # otherwise create one. Either path yields a single release id.
+          ID=$(gh api --paginate "repos/${REPO}/releases" \
+            --jq "[.[] | select(.tag_name == \"${TAG}\" and .draft == true)][0].id // empty")
+          if [ -z "$ID" ]; then
+            ID=$(gh api -X POST "repos/${REPO}/releases" \
+              -f tag_name="${TAG}" \
+              -f name="Juling Router ${TAG}" \
+              -f body="See the assets to download and install this version." \
+              -F draft=true -F prerelease=false --jq '.id')
+            echo "created draft release $ID"
+          else
+            echo "reusing existing draft release $ID"
+          fi
+          echo "release_id=$ID" >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: create-release
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'windows-latest'
+            rust-target: 'x86_64-pc-windows-msvc'
+            args: ''
+
+          # Use SDK 26+ on both architectures so AppKit gives the native
+          # traffic lights the same size/alignment as Coffee CLI. Keep the
+          # Intel fallback on this image too; SDK 15 changes these metrics.
+          - platform: 'macos-26'
+            rust-target: 'aarch64-apple-darwin'
+            args: '--target aarch64-apple-darwin --bundles dmg'
+
+          - platform: 'macos-26-intel'
+            rust-target: 'x86_64-apple-darwin'
+            args: '--target x86_64-apple-darwin --bundles dmg'
+
+          # Linux: deb + rpm only. AppImage bundles full webkit/gtk runtime
+          # (~80MB each); deb/rpm rely on system webkit2gtk (~11MB each).
+          - platform: 'ubuntu-24.04'
+            rust-target: 'x86_64-unknown-linux-gnu'
+            args: '--bundles deb,rpm'
+
+          - platform: 'ubuntu-24.04-arm'
+            rust-target: 'aarch64-unknown-linux-gnu'
+            args: '--bundles deb,rpm'
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.tag || github.ref_name }}
+
+      # AppKit chooses traffic-light metrics from the linked SDK. SDK 15
+      # produces smaller buttons centered at y=24 with our inset; SDK 26+
+      # matches Coffee CLI and the 40px frontend titlebar (center y=20).
+      - name: Require modern macOS SDK for native window controls
+        if: runner.os == 'macOS'
+        run: |
+          set -euo pipefail
+          SDK_VERSION="$(xcrun --sdk macosx --show-sdk-version)"
+          if [[ "${SDK_VERSION%%.*}" -lt 26 ]]; then
+            echo "::error::macOS SDK 26+ is required for correctly sized and aligned native window buttons (found $SDK_VERSION)."
+            exit 1
+          fi
+          echo "Building with macOS SDK $SDK_VERSION"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          # Pinned to 22 to match ci.yml. setup-node@v6 + node-version: lts/*
+          # triggers "manifest.filter is not a function" on Node 24 runners
+          # (Windows + Linux x86_64 hit this on tag v4.9.4 release run
+          # 26334424977 — 2026-05-23). ci.yml never hit it because it always
+          # used a numeric pin.
+          node-version: 22
+          cache: 'npm'
+
+      # Pinned to 1.93 — see comment in ci.yml. Keep both files in
+      # lockstep so a deliberate bump touches both.
+      - name: Install Rust 1.93 (pinned)
+        uses: dtolnay/rust-toolchain@1.93
+        with:
+          targets: ${{ matrix.rust-target }}
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: './src-tauri -> target'
+
+      - name: Install Linux system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf libssl-dev libgtk-3-dev libasound2-dev libxkbcommon-dev
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Verify Antigravity OAuth build credentials
+        shell: bash
+        env:
+          ANTIGRAVITY_OAUTH_CLIENT_ID: ${{ secrets.ANTIGRAVITY_OAUTH_CLIENT_ID }}
+          ANTIGRAVITY_OAUTH_CLIENT_SECRET: ${{ secrets.ANTIGRAVITY_OAUTH_CLIENT_SECRET }}
+        run: test -n "$ANTIGRAVITY_OAUTH_CLIENT_ID" && test -n "$ANTIGRAVITY_OAUTH_CLIENT_SECRET"
+
+      - name: Build the app
+        if: inputs.platforms != 'macos-arm' || matrix.rust-target == 'aarch64-apple-darwin'
+        shell: bash
+        env:
+          ANTIGRAVITY_OAUTH_CLIENT_ID: ${{ secrets.ANTIGRAVITY_OAUTH_CLIENT_ID }}
+          ANTIGRAVITY_OAUTH_CLIENT_SECRET: ${{ secrets.ANTIGRAVITY_OAUTH_CLIENT_SECRET }}
+        run: npm run tauri -- build ${{ matrix.args }}
+
+      - name: Verify packaged macOS SDK
+        if: runner.os == 'macOS' && (inputs.platforms != 'macos-arm' || matrix.rust-target == 'aarch64-apple-darwin')
+        env:
+          RUST_TARGET: ${{ matrix.rust-target }}
+        run: |
+          set -euo pipefail
+          VERSION="${{ inputs.tag || github.ref_name }}"
+          VERSION="${VERSION#v}"
+          if [[ "$RUST_TARGET" = aarch64-* ]]; then DMG_ARCH=aarch64; else DMG_ARCH=x64; fi
+          DMG=$(find src-tauri/target -name "Juling Router_${VERSION}_${DMG_ARCH}.dmg" -type f | head -1)
+          test -n "$DMG"
+          MOUNT="$RUNNER_TEMP/juling-router-sdk-check"
+          mkdir -p "$MOUNT"
+          hdiutil attach "$DMG" -readonly -nobrowse -mountpoint "$MOUNT"
+          trap 'hdiutil detach "$MOUNT" -quiet' EXIT
+          APP="$MOUNT/Juling Router.app"
+          ARCH=$(lipo -archs "$APP/Contents/MacOS/juling-router")
+          if [[ "$RUST_TARGET" = aarch64-* ]]; then test "$ARCH" = arm64; else test "$ARCH" = x86_64; fi
+          SDK_VERSION="$(xcrun vtool -show-build "$APP/Contents/MacOS/juling-router" | awk '$1 == "sdk" { print $2; exit }')"
+          test -n "$SDK_VERSION"
+          test "${SDK_VERSION%%.*}" -ge 26
+
+      - name: Upload verified installers to the draft
+        if: inputs.platforms != 'macos-arm' || matrix.rust-target == 'aarch64-apple-darwin'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+          RUST_TARGET: ${{ matrix.rust-target }}
+        run: |
+          set -euo pipefail
+          test "$(gh release view "$TAG" --repo "$REPO" --json isDraft -q .isDraft)" = true
+          python - <<'PYUPLOAD'
+          from pathlib import Path
+          import os, shutil, subprocess, time, hashlib
+          target = os.environ['RUST_TARGET']
+          version = os.environ['TAG'].removeprefix('v')
+          arch = 'arm64' if target.startswith('aarch64') else 'x64'
+          if 'windows' in target:
+              formats = {'exe': f'Windows_{arch}-setup.exe', 'msi': f'Windows_{arch}.msi'}
+          elif 'darwin' in target:
+              formats = {'dmg': f'macOS_{arch}.dmg'}
+          else:
+              formats = {'deb': f'Linux_{arch}.deb', 'rpm': f'Linux_{arch}.rpm'}
+          bundle = Path('src-tauri/target') / target / 'release/bundle'
+          if not bundle.exists(): bundle = Path('src-tauri/target/release/bundle')
+          out = Path(os.environ['RUNNER_TEMP']) / 'juling-router-installers'
+          out.mkdir(exist_ok=True)
+          for extension, suffix in formats.items():
+              files = list(bundle.rglob('*.' + extension))
+              if len(files) != 1: raise SystemExit(f'Expected one {extension} installer, found {len(files)}')
+              package = files[0]
+              if package.stat().st_size == 0: raise SystemExit('Empty installer')
+              upload = out / f'JulingRouter_{version}_{suffix}'
+              shutil.copy2(package, upload)
+              print(upload.name, upload.stat().st_size, hashlib.sha256(upload.read_bytes()).hexdigest(), flush=True)
+              for attempt in range(3):
+                  result = subprocess.run(['gh', 'release', 'upload', os.environ['TAG'],
+                      '--repo', os.environ['REPO'], str(upload), '--clobber'])
+                  if result.returncode == 0: break
+                  if attempt == 2: raise SystemExit(result.returncode)
+                  time.sleep(10)
+          PYUPLOAD
+
+  rename-assets:
+    # Tauri's bundler uses inconsistent filenames (no platform label, RPM "-1"
+    # release counter, version-less updater bundle). Rename every asset on the
+    # release in place via the GitHub API — non-destructive, no re-upload.
+    needs: release
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Rename release assets with platform labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          set -euo pipefail
+          VER="${TAG#v}"
+          # Pull every asset on this tag, derive a clean platform-labeled
+          # name, PATCH only when the name actually changes.
+          #
+          # `gh api releases/tags/${TAG}` does NOT return draft releases —
+          # since v4.8.6 we publish as draft (releaseDraft: true) and flip
+          # to public manually as the last step, so we have to list all
+          # releases and filter ourselves (`gh release view` also works
+          # for drafts but doesn't give us numeric asset IDs we need for
+          # the PATCH call below).
+          gh api --paginate "repos/${REPO}/releases" \
+            --jq ".[] | select(.tag_name == \"${TAG}\") | .assets[] | \"\(.id)\t\(.name)\"" \
+          | while IFS=$'\t' read -r ID NAME; do
+              case "$NAME" in
+                *_x64-setup.exe)             NEW="JulingRouter_${VER}_Windows_x64-setup.exe" ;;
+                *_x64_*.msi)                 NEW="JulingRouter_${VER}_Windows_x64.msi" ;;
+                *_aarch64.dmg)               NEW="JulingRouter_${VER}_macOS_arm64.dmg" ;;
+                *_x64.dmg)                   NEW="JulingRouter_${VER}_macOS_x64.dmg" ;;
+                *_amd64.deb)                 NEW="JulingRouter_${VER}_Linux_x64.deb" ;;
+                *_arm64.deb)                 NEW="JulingRouter_${VER}_Linux_arm64.deb" ;;
+                *.x86_64.rpm)                NEW="JulingRouter_${VER}_Linux_x64.rpm" ;;
+                *.aarch64.rpm)               NEW="JulingRouter_${VER}_Linux_arm64.rpm" ;;
+                *)                           NEW="" ;;
+              esac
+              if [ -n "$NEW" ] && [ "$NEW" != "$NAME" ]; then
+                echo "rename: $NAME  ->  $NEW"
+                gh api -X PATCH "repos/${REPO}/releases/assets/${ID}" -f name="$NEW" --jq '.name'
+              fi
+            done
+
+  # NOTE: manifest bump moved to .github/workflows/sync-version-manifest.yml.
+  # That workflow triggers on `release: { types: [published] }`, which fires
+  # the moment the operator flips draft → public (the final step of the
+  # release flow). Bumping the manifest from this tag-push workflow used
+  # to race the publish: a 5-15 min window where in-app auto-updater told
+  # users "v4.8.6 available" but clicking download 404'd because the
+  # GitHub Release was still draft.

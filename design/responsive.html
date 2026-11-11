@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <title>窄窗 — Responsive</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+    <style>
+      body { padding: 0; }
+      .caption {
+        display: flex;
+        justify-content: space-between;
+        padding: 14px 24px;
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--muted);
+        border-bottom: 1px solid var(--hair);
+        border-top: 1px solid var(--hair);
+        background: var(--paper);
+      }
+      iframe { display: block; border: 0; margin: 0 auto; background: var(--paper); }
+    </style>
+  </head>
+  <body>
+    <div class="caption"><span>目录 · 1024 × 768</span><span>hide 分类 / 最后使用</span></div>
+    <iframe src="catalog.html" width="1024" height="768" title="catalog 1024"></iframe>
+    <div class="caption"><span>目录 · 768 × 900</span><span>keep № / 应用 / 状态 / 操作</span></div>
+    <iframe src="catalog.html" width="768" height="900" title="catalog 768"></iframe>
+    <div class="caption"><span>路由 · 768 × 900</span><span>轨道横向滚动</span></div>
+    <iframe src="routes.html" width="768" height="900" title="routes 768"></iframe>
+  </body>
+</html>

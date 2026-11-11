@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>轨迹 — Trail</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li class="active">轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">08</span><h1>轨迹</h1></div>
+        <div class="page-meta">连续 42 天 · 累计 6.2M tokens · 从 2026-05 开始</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">连续使用</div><div class="v">42<span class="u">天</span></div><div class="d">最长 57 天</div></div>
+        <div class="stat"><div class="k">今日 tokens</div><div class="v">128<span class="u">K</span></div><div class="d">较昨日 +6.2%</div></div>
+        <div class="stat"><div class="k">本周 tokens</div><div class="v">6.2<span class="u">M</span></div><div class="d">7 天平均 886K</div></div>
+        <div class="stat"><div class="k">本月成本</div><div class="v">¥38.40</div><div class="d">预算剩余 62%</div></div>
+      </div>
+
+      <div class="cols cols-wide" style="margin-top: 34px">
+        <section>
+          <div class="panel-label">最近 26 周</div>
+          <div class="heat" id="heat"></div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 14px; font-family: var(--mono); font-size: 10px; color: var(--muted-2)">
+            <span>少</span>
+            <i style="width: 10px; height: 10px; background: var(--paper-3)"></i>
+            <i style="width: 10px; height: 10px; background: color-mix(in srgb, var(--accent) 22%, var(--paper-3))"></i>
+            <i style="width: 10px; height: 10px; background: color-mix(in srgb, var(--accent) 46%, var(--paper-3))"></i>
+            <i style="width: 10px; height: 10px; background: color-mix(in srgb, var(--accent) 72%, var(--paper-3))"></i>
+            <i style="width: 10px; height: 10px; background: var(--accent)"></i>
+            <span>多</span>
+          </div>
+
+          <div class="panel-label" style="margin-top: 30px">最近 30 天</div>
+          <div class="bars" id="bars"></div>
+        </section>
+
+        <section class="panel-rule">
+          <div class="panel-label">里程碑</div>
+          <div class="kv" style="grid-template-columns: 78px 1fr; margin-bottom: 16px"><span class="k">11-10</span><span class="v">完成第 100 万次路由</span></div>
+          <div class="kv" style="grid-template-columns: 78px 1fr; margin-bottom: 16px"><span class="k">11-06</span><span class="v">单日 token 突破 500K</span></div>
+          <div class="kv" style="grid-template-columns: 78px 1fr; margin-bottom: 16px"><span class="k">10-28</span><span class="v">接入第一个本地模型</span></div>
+          <div class="kv" style="grid-template-columns: 78px 1fr; margin-bottom: 16px"><span class="k">10-12</span><span class="v">连续使用 30 天</span></div>
+          <div class="kv" style="grid-template-columns: 78px 1fr; margin-bottom: 16px"><span class="k">09-30</span><span class="v">开启语音输入</span></div>
+          <div class="kv" style="grid-template-columns: 78px 1fr"><span class="k">05-23</span><span class="v">第一次启动</span></div>
+        </section>
+      </div>
+
+      <section class="panel-rule" style="margin-top: 30px">
+        <div class="panel-label">按应用</div>
+        <div class="usage-row"><span>Claude Code</span><span class="m">2.8M</span><span class="m">¥18.20</span><span class="quota"><span class="bar"><i style="width: 45%"></i></span><span class="pct">45%</span></span></div>
+        <div class="usage-row"><span>Codex</span><span class="m">1.6M</span><span class="m">¥9.80</span><span class="quota"><span class="bar"><i style="width: 26%"></i></span><span class="pct">26%</span></span></div>
+        <div class="usage-row"><span>Cursor</span><span class="m">0.9M</span><span class="m">¥5.40</span><span class="quota"><span class="bar"><i style="width: 15%"></i></span><span class="pct">15%</span></span></div>
+        <div class="usage-row"><span>本地模型</span><span class="m">0.6M</span><span class="m">¥0.00</span><span class="quota"><span class="bar"><i style="width: 10%"></i></span><span class="pct">10%</span></span></div>
+        <div class="usage-row"><span>其它</span><span class="m">0.3M</span><span class="m">¥5.00</span><span class="quota"><span class="bar"><i style="width: 4%"></i></span><span class="pct">4%</span></span></div>
+      </section>
+    </main>
+
+    <div class="foot"><span>统计口径：本地记录，不上传 · 最近计算 3 分钟前</span><span>08 / 09</span></div>
+
+    <script>
+      const heat = document.getElementById('heat');
+      for (let i = 0; i < 364; i++) {
+        const cell = document.createElement('i');
+        const v = Math.sin(i * 0.37) * Math.cos(i * 0.11) + Math.sin(i * 0.05);
+        if (v > 1.35) cell.className = 'l4';
+        else if (v > 0.9) cell.className = 'l3';
+        else if (v > 0.45) cell.className = 'l2';
+        else if (v > -0.05) cell.className = 'l1';
+        heat.appendChild(cell);
+      }
+      const bars = document.getElementById('bars');
+      for (let i = 0; i < 30; i++) {
+        const bar = document.createElement('i');
+        const h = 10 + Math.round(62 * Math.abs(Math.sin(i * 0.55)) * (0.6 + 0.4 * Math.cos(i * 0.19)));
+        bar.style.height = h + 'px';
+        if (i > 21) bar.className = 'on';
+        bars.appendChild(bar);
+      }
+    </script>
+  </body>
+</html>

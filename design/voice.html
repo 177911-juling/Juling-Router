@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>声音 — Voice</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li class="active">声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">05</span><h1>声音</h1></div>
+        <div class="page-meta">主用 1 · 备用 2 · 48 kHz · 延迟 120ms</div>
+      </div>
+
+      <div class="cols cols-wide">
+        <section>
+          <div class="panel-label">输入</div>
+          <div class="big-hint">按住说话 <span class="big-key">⌥ Space</span></div>
+          <div class="wave" id="wave"></div>
+          <div class="wave-note">主用通道 · 本地 Whisper large-v3 · 48 kHz · 延迟 120ms</div>
+          <div style="display: flex; gap: 10px; margin-top: 18px">
+            <button class="btn">试听</button>
+            <button class="btn btn-ghost">修改快捷键</button>
+          </div>
+        </section>
+
+        <section class="panel-rule">
+          <div class="panel-label">识别</div>
+          <div class="kv" style="grid-template-columns: 96px 1fr; margin-bottom: 10px"><span class="k">语言</span><span class="v">中文（普通话）</span></div>
+          <div class="kv" style="grid-template-columns: 96px 1fr; margin-bottom: 10px"><span class="k">标点</span><span class="v">自动添加</span></div>
+          <div class="kv" style="grid-template-columns: 96px 1fr; margin-bottom: 10px"><span class="k">结束方式</span><span class="v">松开即发送</span></div>
+          <div class="kv" style="grid-template-columns: 96px 1fr; margin-bottom: 10px"><span class="k">降噪</span><span class="v">中等</span></div>
+          <div class="kv" style="grid-template-columns: 96px 1fr"><span class="k">听写目标</span><span class="v">当前输入框</span></div>
+        </section>
+      </div>
+
+      <div style="margin-top: 34px">
+        <div class="panel-label" style="margin-bottom: 0">通道</div>
+        <div class="table chan" style="margin-top: 4px">
+          <div class="thead">
+            <span>№</span>
+            <span>通道</span>
+            <span>类型</span>
+            <span>模型</span>
+            <span>延迟</span>
+            <span>状态</span>
+            <span class="right">操作</span>
+          </div>
+          <div class="row">
+            <span class="row-index">01</span>
+            <span class="row-name">本地 Whisper</span>
+            <span class="row-cat">本地</span>
+            <span class="count-cell">large-v3</span>
+            <span class="count-cell">120ms</span>
+            <span class="status"><i class="dot live"></i>主用</span>
+            <span class="row-actions"><button>测试</button><button class="primary-text">详情</button></span>
+          </div>
+          <div class="row">
+            <span class="row-index">02</span>
+            <span class="row-name">讯飞</span>
+            <span class="row-cat">云端</span>
+            <span class="count-cell">通用</span>
+            <span class="count-cell">480ms</span>
+            <span class="status"><i class="dot ok"></i>备用 1</span>
+            <span class="row-actions"><button>设为主用</button><button class="primary-text">详情</button></span>
+          </div>
+          <div class="row">
+            <span class="row-index">03</span>
+            <span class="row-name">豆包</span>
+            <span class="row-cat">云端</span>
+            <span class="count-cell">通用</span>
+            <span class="count-cell">620ms</span>
+            <span class="status"><i class="dot ok"></i>备用 2</span>
+            <span class="row-actions"><button>设为主用</button><button class="primary-text">详情</button></span>
+          </div>
+        </div>
+      </div>
+
+      <section class="panel-rule" style="margin-top: 28px">
+        <div class="panel-label">最近听写</div>
+        <div class="recent-row"><span class="t">10:42</span><span>帮我检查一下语音输入为什么没有声音</span><span class="m">本地 Whisper</span><span class="s">已发送</span></div>
+        <div class="recent-row"><span class="t">10:36</span><span>把这段说明翻译成英文，保留代码块</span><span class="m">本地 Whisper</span><span class="s">已发送</span></div>
+        <div class="recent-row"><span class="t">09:58</span><span>下周一的会议改到下午三点</span><span class="m">讯飞 · 备用</span><span class="s">已发送</span></div>
+      </section>
+    </main>
+
+    <div class="foot"><span>3 条语音通道 · 本地模型 1.5 GB · 最近更新 昨天</span><span>05 / 09</span></div>
+
+    <script>
+      const wave = document.getElementById('wave');
+      for (let i = 0; i < 56; i++) {
+        const bar = document.createElement('i');
+        const h = 6 + Math.round(44 * Math.abs(Math.sin(i * 0.62)) * (0.55 + 0.45 * Math.sin(i * 0.21)));
+        bar.style.height = h + 'px';
+        if (i > 18 && i < 34) bar.className = 'on';
+        wave.appendChild(bar);
+      }
+    </script>
+  </body>
+</html>

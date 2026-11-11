@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地 — Local</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li class="active">本地</li>
+      </ul>
+      <div class="index-right"><span>设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head">
+        <div class="page-title"><span class="num">09</span><h1>本地</h1></div>
+        <div class="page-meta">引擎运行中 · 127.0.0.1:11434 · 3 个模型已加载</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="k">显存</div><div class="v">8.2<span class="u">/ 12 GB</span></div><div class="d">Qwen3-32B 占 5.2 GB</div></div>
+        <div class="stat"><div class="k">CPU</div><div class="v">34<span class="u">%</span></div><div class="d">8 核 · 平均负载 2.7</div></div>
+        <div class="stat"><div class="k">吞吐</div><div class="v">42<span class="u">tok/s</span></div><div class="d">首 token 180ms</div></div>
+        <div class="stat"><div class="k">已运行</div><div class="v">3<span class="u">h 12m</span></div><div class="d">今天 07:30 启动</div></div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <button class="filter active">模型 <span class="count">4</span></button>
+          <button class="filter">引擎</button>
+          <button class="filter">日志</button>
+          <button class="filter">路径</button>
+        </div>
+        <div class="search"><input placeholder="搜索本地模型" /><span class="kbd">⌘K</span></div>
+      </div>
+
+      <div class="app-grid g4">
+        <article class="app-card model-card selected">
+          <div class="top"><span class="idx">01</span><span class="status"><i class="dot ok"></i>已加载</span></div>
+          <div class="card-head"><h3>Qwen3-32B</h3><div class="cat">QWEN · 32B · Q4_K_M</div></div>
+          <div class="metrics">
+            <div><span class="k">大小</span><span class="v">18.4 GB</span></div>
+            <div><span class="k">上下文</span><span class="v">128K</span></div>
+            <div><span class="k">吞吐</span><span class="v">42 tok/s</span></div>
+          </div>
+          <div class="card-foot"><span class="stats">显存 5.2 GB</span><span class="acts"><button>设置</button><button class="primary-text">卸载</button></span></div>
+        </article>
+
+        <article class="app-card model-card">
+          <div class="top"><span class="idx">02</span><span class="status"><i class="dot ok"></i>已加载</span></div>
+          <div class="card-head"><h3>GLM-4.6-Air</h3><div class="cat">GLM · 12B · Q5_K_M</div></div>
+          <div class="metrics">
+            <div><span class="k">大小</span><span class="v">8.1 GB</span></div>
+            <div><span class="k">上下文</span><span class="v">64K</span></div>
+            <div><span class="k">吞吐</span><span class="v">28 tok/s</span></div>
+          </div>
+          <div class="card-foot"><span class="stats">显存 3.0 GB</span><span class="acts"><button>设置</button><button class="primary-text">卸载</button></span></div>
+        </article>
+
+        <article class="app-card model-card">
+          <div class="top"><span class="idx">03</span><span class="status"><i class="dot off"></i>未加载</span></div>
+          <div class="card-head"><h3>Llama-3.3-70B</h3><div class="cat">LLAMA · 70B · Q4_0</div></div>
+          <div class="metrics">
+            <div><span class="k">大小</span><span class="v">39.6 GB</span></div>
+            <div><span class="k">上下文</span><span class="v">32K</span></div>
+            <div><span class="k">显存需求</span><span class="v">24 GB</span></div>
+          </div>
+          <div class="card-foot"><span class="stats">未加载</span><span class="acts"><button>设置</button><button class="primary-text">加载</button></span></div>
+        </article>
+
+        <article class="app-card model-card">
+          <div class="top"><span class="idx">04</span><span class="status"><i class="dot ok"></i>已加载</span></div>
+          <div class="card-head"><h3>Whisper large-v3</h3><div class="cat">WHISPER · 1.5B · FP16</div></div>
+          <div class="metrics">
+            <div><span class="k">大小</span><span class="v">1.5 GB</span></div>
+            <div><span class="k">用途</span><span class="v">语音输入</span></div>
+            <div><span class="k">延迟</span><span class="v">120ms</span></div>
+          </div>
+          <div class="card-foot"><span class="stats">运行于 CPU</span><span class="acts"><button>设置</button><button class="primary-text">卸载</button></span></div>
+        </article>
+      </div>
+
+      <div class="cols" style="margin-top: 26px">
+        <section class="panel-rule">
+          <div style="display: flex; align-items: baseline; justify-content: space-between">
+            <div class="panel-label">引擎日志</div>
+            <span class="text-link">查看完整日志</span>
+          </div>
+          <div class="mono" style="font-size: 11px; line-height: 2; color: var(--muted)">
+            <div>10:42:03 <span style="color: var(--ink-2)">engine started on 127.0.0.1:11434</span></div>
+            <div>10:42:04 <span style="color: var(--ink-2)">loaded qwen3-32b-q4_k_m.gguf · 18.4 GB</span></div>
+            <div>10:42:06 <span style="color: var(--ink-2)">loaded glm-4.6-air-q5_k_m.gguf · 8.1 GB</span></div>
+            <div>10:42:07 <span style="color: var(--ok)">ready · 2 models · 8.2 GB VRAM</span></div>
+            <div>11:02:41 <span style="color: var(--ink-2)">POST /v1/chat/completions 200 · 1.8s · 412 tok</span></div>
+            <div>11:04:12 <span style="color: var(--warn)">WARN context 118K / 128K · truncating history</span></div>
+          </div>
+        </section>
+        <section class="panel-rule">
+          <div class="panel-label">引擎</div>
+          <div class="kv" style="grid-template-columns: 82px 1fr; margin-bottom: 12px"><span class="k">后端</span><span class="v">llama.cpp b4210</span></div>
+          <div class="kv" style="grid-template-columns: 82px 1fr; margin-bottom: 12px"><span class="k">设备</span><span class="v">CUDA 12.4 · RTX 4070</span></div>
+          <div class="kv" style="grid-template-columns: 82px 1fr; margin-bottom: 12px"><span class="k">线程</span><span class="v">8 · 批大小 512</span></div>
+          <div class="kv" style="grid-template-columns: 82px 1fr; margin-bottom: 12px"><span class="k">上下文</span><span class="v">128K</span></div>
+          <div class="kv" style="grid-template-columns: 82px 1fr"><span class="k">启动参数</span><span class="v mono" style="font-size: 11px">--n-gpu-layers 99</span></div>
+        </section>
+      </div>
+    </main>
+
+    <div class="foot"><span>llama.cpp b4210 · CUDA 12.4 · 显存 8.2 / 12 GB</span><span>09 / 09</span></div>
+
+    <script>
+      document.querySelectorAll(".app-grid").forEach((grid) => {
+        grid.addEventListener("click", (event) => {
+          const card = event.target.closest(".app-card");
+          if (!card || !grid.contains(card)) return;
+          grid.querySelectorAll(".app-card.selected").forEach((item) => item.classList.remove("selected"));
+          card.classList.add("selected");
+        });
+      });
+    </script>
+  </body>
+</html>

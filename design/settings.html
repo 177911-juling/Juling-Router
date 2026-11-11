@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>设置 — Settings</title>
+    <script>if (new URLSearchParams(location.search).has('dark')) document.documentElement.dataset.theme = 'dark';</script>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="mock.css" />
+  </head>
+  <body>
+    <div class="chrome"><span class="ctl">—</span><span class="ctl">□</span><span class="ctl ctl-close">×</span></div>
+
+    <nav class="index">
+      <ul>
+        <li>目录</li>
+        <li>路由</li>
+        <li>身份</li>
+        <li>通道</li>
+        <li>声音</li>
+        <li>助手</li>
+        <li>简报</li>
+        <li>轨迹</li>
+        <li>本地</li>
+      </ul>
+      <div class="index-right"><span style="color: var(--ink); font-weight: 500">设置</span></div>
+    </nav>
+
+    <main>
+      <div class="page-head" style="padding-top: 30px">
+        <div class="page-title"><h1>设置</h1></div>
+        <div class="page-meta">版本 1.0.0 · 配置目录 ~/.juling-router</div>
+      </div>
+
+      <div class="filters" style="margin-top: 22px">
+        <div class="filter-group">
+          <button class="filter active">通用</button>
+          <button class="filter">外观</button>
+          <button class="filter">声音</button>
+          <button class="filter">数据</button>
+          <button class="filter">关于</button>
+        </div>
+        <div class="search"><input placeholder="搜索设置项" /><span class="kbd">⌘K</span></div>
+      </div>
+
+      <div class="form">
+        <div class="panel-label" style="margin-top: 14px">通用</div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">开机启动</div>
+            <div class="desc">登录系统后在后台启动，不弹出主窗口。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="seg"><span class="on">开</span><span>关</span></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">语言</div>
+            <div class="desc">界面语言，重启后生效；不影响模型输出语言。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="seg"><span class="on">简体中文</span><span>English</span><span>日本語</span><span>繁體中文</span></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">更新通道</div>
+            <div class="desc">预览通道会提前收到功能更新，也可能包含未稳定的改动。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="seg"><span class="on">稳定</span><span>预览</span></span>
+          </div>
+        </div>
+
+        <div class="panel-label" style="margin-top: 16px">外观</div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">主题</div>
+            <div class="desc">跟随系统会随操作系统在浅色与深色之间自动切换。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="seg"><span class="on">浅色</span><span>深色</span><span>跟随系统</span></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">界面缩放</div>
+            <div class="desc">自动会根据屏幕尺寸选择 90%–110%，窗口较小时优先保证信息完整。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="seg"><span class="on">自动</span><span>90%</span><span>100%</span><span>110%</span></span>
+          </div>
+        </div>
+
+        <div class="panel-label" style="margin-top: 16px">数据</div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">配置目录</div>
+            <div class="desc">账号、路由与会话记录保存在本地，不经过云端。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <span class="mono" style="font-size: 11.5px; color: var(--muted)">~/.juling-router</span>
+            <span class="text-link">打开</span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div>
+            <div class="label">导出配置</div>
+            <div class="desc">导出模型、路由与界面设置，不包含账号凭据。</div>
+          </div>
+          <div class="control" style="justify-content: flex-start">
+            <button class="btn">导出 JSON</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <div class="foot"><span>配置文件 settings.json · 最近修改 今天 09:12</span><span>设置</span></div>
+  </body>
+</html>
