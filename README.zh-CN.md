@@ -185,7 +185,10 @@ Gemini Desktop · Coffee CLI
 ### 我的 AI 生涯 —— 仪表盘
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/162f0428-a44d-4e83-9e10-c6b580ef0120" alt="Juling Router —— 我的 AI 生涯仪表盘" width="820" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/career-cn-dark.png">
+    <img alt="Juling Router —— 我的 AI 生涯仪表盘" src="docs/screenshots/career-cn-light.png" width="820">
+  </picture>
 </p>
 
 ## 安装

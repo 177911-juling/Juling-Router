@@ -189,7 +189,10 @@ Gemini Desktop · Coffee CLI
 ### My AI Career — dashboard
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/162f0428-a44d-4e83-9e10-c6b580ef0120" alt="Juling Router — My AI Career dashboard" width="820" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/career-en-dark.png">
+    <img alt="Juling Router — My AI Career dashboard" src="docs/screenshots/career-en-light.png" width="820">
+  </picture>
 </p>
 
 ## Install
